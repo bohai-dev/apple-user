@@ -20,7 +20,7 @@
     </parent>
 
     <modules>
-        <module>milktea-user</module>
+        <module>applefront-user</module>
         <module>wxpay-sdk</module>
     </modules>
 

@@ -1,6 +1,8 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaLoginWeixin;
+
+
+import com.apple.appleuser.domain.TeaLoginWeixin;
 
 public interface TeaLoginWeixinMapper {
     int deleteByPrimaryKey(String weixinOpenid);

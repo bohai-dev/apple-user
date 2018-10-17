@@ -1,4 +1,6 @@
-package com.milktea.milkteauser.config;
+package com.apple.appleuser.config;
+
+
 
 import com.milktea.milkteauser.wxpay.IWXPayDomain;
 import com.milktea.milkteauser.wxpay.WXPayConfig;

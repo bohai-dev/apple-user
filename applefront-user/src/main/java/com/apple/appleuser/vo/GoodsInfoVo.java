@@ -1,10 +1,10 @@
-package com.milktea.milkteauser.vo;
+package com.apple.appleuser.vo;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.milktea.milkteauser.domain.TeaAttributesInfo;
-import com.milktea.milkteauser.domain.TeaClassInfo;
+import com.apple.appleuser.domain.TeaAttributesInfo;
+import com.apple.appleuser.domain.TeaClassInfo;
 
 
 

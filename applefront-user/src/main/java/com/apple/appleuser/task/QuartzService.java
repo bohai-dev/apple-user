@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.task;
+package com.apple.appleuser.task;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,9 +17,9 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.milktea.milkteauser.dao.TeaGlobalTokenMapper;
-import com.milktea.milkteauser.domain.TeaGlobalToken;
-import com.milktea.milkteauser.exception.MilkTeaErrorConstant;
+import com.apple.appleuser.dao.TeaGlobalTokenMapper;
+import com.apple.appleuser.domain.TeaGlobalToken;
+import com.apple.appleuser.exception.MilkTeaErrorConstant;
 
 
 

@@ -1,4 +1,4 @@
-package com.milktea.milkteauser;
+package com.apple.appleuser;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  
 
 @SpringBootApplication
-@MapperScan("com.milktea.milkteauser.dao")
+@MapperScan("com.apple.appleuser.dao")
 public class Application {  
     
 

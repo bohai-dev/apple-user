@@ -1,6 +1,8 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaClassInfo;
+
+
+import com.apple.appleuser.domain.TeaClassInfo;
 
 public interface TeaClassInfoMapper {
     int deleteByPrimaryKey(String classId);

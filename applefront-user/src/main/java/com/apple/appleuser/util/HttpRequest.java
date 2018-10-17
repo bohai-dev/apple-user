@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.util;
+package com.apple.appleuser.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

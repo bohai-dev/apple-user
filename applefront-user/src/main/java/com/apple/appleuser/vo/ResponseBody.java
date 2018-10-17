@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.vo;
+package com.apple.appleuser.vo;
 
 public class ResponseBody<T> extends ResponseHeader{
     

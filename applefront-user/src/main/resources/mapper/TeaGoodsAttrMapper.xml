@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaGoodsAttrMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaGoodsAttr">
+<mapper namespace="com.apple.appleuser.dao.TeaGoodsAttrMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaGoodsAttr">
     <id column="GOODS_ID" jdbcType="VARCHAR" property="goodsId" />
     <id column="ATTR_ID" jdbcType="VARCHAR" property="attrId" />
     <result column="DELETE_FLAG" jdbcType="CHAR" property="deleteFlag" />
@@ -9,25 +9,25 @@
   <sql id="Base_Column_List">
     GOODS_ID, ATTR_ID, DELETE_FLAG
   </sql>
-  <select id="selectByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaGoodsAttrKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaGoodsAttrKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from TEA_GOODS_ATTR
     where GOODS_ID = #{goodsId,jdbcType=VARCHAR}
       and ATTR_ID = #{attrId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaGoodsAttrKey">
+  <delete id="deleteByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaGoodsAttrKey">
     delete from TEA_GOODS_ATTR
     where GOODS_ID = #{goodsId,jdbcType=VARCHAR}
       and ATTR_ID = #{attrId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaGoodsAttr">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaGoodsAttr">
     insert into TEA_GOODS_ATTR (GOODS_ID, ATTR_ID, DELETE_FLAG
       )
     values (#{goodsId,jdbcType=VARCHAR}, #{attrId,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaGoodsAttr">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaGoodsAttr">
     insert into TEA_GOODS_ATTR
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="goodsId != null">
@@ -52,7 +52,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaGoodsAttr">
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaGoodsAttr">
     update TEA_GOODS_ATTR
     <set>
       <if test="deleteFlag != null">
@@ -62,7 +62,7 @@
     where GOODS_ID = #{goodsId,jdbcType=VARCHAR}
       and ATTR_ID = #{attrId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaGoodsAttr">
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaGoodsAttr">
     update TEA_GOODS_ATTR
     set DELETE_FLAG = #{deleteFlag,jdbcType=CHAR}
     where GOODS_ID = #{goodsId,jdbcType=VARCHAR}

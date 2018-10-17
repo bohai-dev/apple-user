@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.domain;
+package com.apple.appleuser.domain;
 
 import java.math.BigDecimal;
 import java.util.List;

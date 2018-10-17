@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaUserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaUserInfo">
+<mapper namespace="com.apple.appleuser.dao.TeaUserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaUserInfo">
     <id column="USER_NO" jdbcType="VARCHAR" property="userNo" />
     <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
     <result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
@@ -31,7 +31,7 @@
     delete from TEA_USER_INFO
     where USER_NO = #{userNo,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaUserInfo">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaUserInfo">
     insert into TEA_USER_INFO (USER_NO, USER_NAME, USER_PASSWORD, 
       WEIXIN_ID, WEIXIN_OPENID, TELEPHONE, 
       POINTS, REGISTER_DATE, IDENTIFY_CODE, 
@@ -45,7 +45,7 @@
   </insert>
   
   
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaUserInfo">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaUserInfo">
     insert into TEA_USER_INFO
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userNo != null">
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaUserInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaUserInfo">
     update TEA_USER_INFO
     <set>
       <if test="userName != null">
@@ -181,7 +181,7 @@
     </set>
     where USER_NO = #{userNo,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaUserInfo">
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaUserInfo">
     update TEA_USER_INFO
     set USER_NAME = #{userName,jdbcType=VARCHAR},
       USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},

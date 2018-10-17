@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.vo;
+package com.apple.appleuser.vo;
 
 /**
  * 分页查询请求参数

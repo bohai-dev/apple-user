@@ -1,4 +1,6 @@
-package com.milktea.milkteauser.controller;
+package com.apple.appleuser.controller;
+
+
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -6,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.milktea.milkteauser.domain.TeaOrderInfo;
+import com.apple.appleuser.domain.TeaOrderInfo;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -27,14 +29,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.UserOrderInfoService;
-import com.milktea.milkteauser.util.HttpUtil;
-import com.milktea.milkteauser.vo.CustOrderInfoVo;
-import com.milktea.milkteauser.vo.PageRequestVo;
-import com.milktea.milkteauser.vo.QueryOrdersRequestVo;
-import com.milktea.milkteauser.vo.ResponseBody;
-import com.milktea.milkteauser.vo.ResponseHeader;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserOrderInfoService;
+import com.apple.appleuser.util.HttpUtil;
+import com.apple.appleuser.vo.CustOrderInfoVo;
+import com.apple.appleuser.vo.PageRequestVo;
+import com.apple.appleuser.vo.QueryOrdersRequestVo;
+import com.apple.appleuser.vo.ResponseBody;
+import com.apple.appleuser.vo.ResponseHeader;
 
 
 

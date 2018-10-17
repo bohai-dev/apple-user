@@ -1,10 +1,10 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.milktea.milkteauser.domain.TeaSmsRegister;
+import com.apple.appleuser.domain.TeaSmsRegister;
 
 public interface TeaSmsRegisterMapper {
     int insert(TeaSmsRegister record);

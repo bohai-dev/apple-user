@@ -1,10 +1,10 @@
-package com.milktea.milkteauser.service;
+package com.apple.appleuser.service;
 
 import java.util.List;
 
-import com.milktea.milkteauser.domain.TeaOrderInfo;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.vo.CustOrderInfoVo;
+import com.apple.appleuser.domain.TeaOrderInfo;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.vo.CustOrderInfoVo;
 
 
 

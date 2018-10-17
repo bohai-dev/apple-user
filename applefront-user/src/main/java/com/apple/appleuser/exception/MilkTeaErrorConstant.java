@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.exception;
+package com.apple.appleuser.exception;
 
 /**
  * 错误信息

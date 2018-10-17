@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaLoginWeixinMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaLoginWeixin">
+<mapper namespace="com.apple.appleuser.dao.TeaLoginWeixinMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaLoginWeixin">
     <id column="WEIXIN_OPENID" jdbcType="VARCHAR" property="weixinOpenid" />
     <result column="WEIXIN_ACCESSTOKEN" jdbcType="VARCHAR" property="weixinAccesstoken" />
     <result column="WEIXIN_NICKNAME" jdbcType="VARCHAR" property="weixinNickname" />
@@ -27,7 +27,7 @@
     delete from TEA_LOGIN_WEIXIN
     where WEIXIN_OPENID = #{weixinOpenid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaLoginWeixin">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaLoginWeixin">
     insert into TEA_LOGIN_WEIXIN (WEIXIN_OPENID, WEIXIN_ACCESSTOKEN, 
       WEIXIN_NICKNAME, WEIXIN_SEX, WEIXIN_PROVINCE, 
       CITY, COUNTRY, HEADIMGURL, 
@@ -37,7 +37,7 @@
       #{city,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR}, 
       #{privilege,jdbcType=VARCHAR}, #{unionid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaLoginWeixin">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaLoginWeixin">
     insert into TEA_LOGIN_WEIXIN
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="weixinOpenid != null">
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaLoginWeixin">
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaLoginWeixin">
     update TEA_LOGIN_WEIXIN
     <set>
       <if test="weixinAccesstoken != null">
@@ -137,7 +137,7 @@
     </set>
     where WEIXIN_OPENID = #{weixinOpenid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaLoginWeixin">
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaLoginWeixin">
     update TEA_LOGIN_WEIXIN
     set WEIXIN_ACCESSTOKEN = #{weixinAccesstoken,jdbcType=VARCHAR},
       WEIXIN_NICKNAME = #{weixinNickname,jdbcType=VARCHAR},

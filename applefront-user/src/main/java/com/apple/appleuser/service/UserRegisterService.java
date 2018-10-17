@@ -1,9 +1,9 @@
-package com.milktea.milkteauser.service;
+package com.apple.appleuser.service;
 
-import com.milktea.milkteauser.domain.TeaLoginWeixin;
-import com.milktea.milkteauser.domain.TeaSmsRegister;
-import com.milktea.milkteauser.domain.TeaUserInfo;
-import com.milktea.milkteauser.exception.MilkTeaException;
+import com.apple.appleuser.domain.TeaLoginWeixin;
+import com.apple.appleuser.domain.TeaSmsRegister;
+import com.apple.appleuser.domain.TeaUserInfo;
+import com.apple.appleuser.exception.MilkTeaException;
 
 
 

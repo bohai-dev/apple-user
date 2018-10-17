@@ -1,6 +1,8 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaCarouselFigure;
+
+
+import com.apple.appleuser.domain.TeaCarouselFigure;
 
 public interface TeaCarouselFigureMapper {
     int deleteByPrimaryKey(String figureId);

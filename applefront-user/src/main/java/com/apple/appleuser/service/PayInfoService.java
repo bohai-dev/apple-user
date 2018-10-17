@@ -1,10 +1,10 @@
-package com.milktea.milkteauser.service;
+package com.apple.appleuser.service;
 
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.vo.IOTBean;
-import com.milktea.milkteauser.vo.IotResponseBean;
-import com.milktea.milkteauser.vo.ResponseBody;
-import com.milktea.milkteauser.vo.StripeBean;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.vo.IOTBean;
+import com.apple.appleuser.vo.IotResponseBean;
+import com.apple.appleuser.vo.ResponseBody;
+import com.apple.appleuser.vo.StripeBean;
 
 public interface PayInfoService {
 

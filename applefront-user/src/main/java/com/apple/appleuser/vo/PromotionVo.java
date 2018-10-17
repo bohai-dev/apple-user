@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.vo;
+package com.apple.appleuser.vo;
 
 import java.util.Date;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.domain;
+package com.apple.appleuser.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

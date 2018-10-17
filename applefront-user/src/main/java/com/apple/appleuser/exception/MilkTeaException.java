@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.exception;
+package com.apple.appleuser.exception;
 
 /**
  * 奶茶异常类

@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
 import java.math.BigDecimal;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.milktea.milkteauser.domain.TeaUserInfo;
+import com.apple.appleuser.domain.TeaUserInfo;
 
 public interface TeaUserInfoMapper {
     int deleteByPrimaryKey(String userNo);

@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.vo;
+package com.apple.appleuser.vo;
 
 /**
  * Cteated by cxy on 2018/9/19

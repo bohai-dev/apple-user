@@ -1,6 +1,6 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaPayInfo;
+import com.apple.appleuser.domain.TeaPayInfo;
 import org.apache.ibatis.annotations.Select;
 
 public interface TeaPayInfoMapper {

@@ -1,8 +1,10 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
+
+
 
 import org.apache.ibatis.annotations.Select;
 
-import com.milktea.milkteauser.domain.TeaOrderDetails;
+import com.apple.appleuser.domain.TeaOrderDetails;
 
 public interface TeaOrderDetailsMapper {
     int deleteByPrimaryKey(String orderDetailId);

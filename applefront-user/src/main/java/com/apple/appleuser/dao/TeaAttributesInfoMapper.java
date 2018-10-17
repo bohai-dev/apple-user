@@ -1,6 +1,8 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaAttributesInfo;
+
+
+import com.apple.appleuser.domain.TeaAttributesInfo;
 
 public interface TeaAttributesInfoMapper {
     int deleteByPrimaryKey(String attrId);

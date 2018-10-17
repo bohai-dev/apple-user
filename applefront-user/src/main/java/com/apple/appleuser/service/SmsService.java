@@ -1,6 +1,6 @@
-package com.milktea.milkteauser.service;
+package com.apple.appleuser.service;
 
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.vo.ResponseBody;
 
 /**
  * 发送短信接口

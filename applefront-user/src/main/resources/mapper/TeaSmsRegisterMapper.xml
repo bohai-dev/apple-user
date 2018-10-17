@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaSmsRegisterMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaSmsRegister">
+<mapper namespace="com.apple.appleuser.dao.TeaSmsRegisterMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaSmsRegister">
     <result column="TELEPHONE" jdbcType="VARCHAR" property="telephone" />
     <result column="IDENTIFY_CODE" jdbcType="VARCHAR" property="identifyCode" />
     <result column="IDENTIFY_TIME" jdbcType="TIMESTAMP" property="identifyTime" />
     <result column="IDENTIFY_FLAG" jdbcType="DECIMAL" property="identifyFlag" />
   </resultMap>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaSmsRegister">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaSmsRegister">
     insert into TEA_SMS_REGISTER (TELEPHONE, IDENTIFY_CODE, IDENTIFY_TIME, 
       IDENTIFY_FLAG)
     values (#{telephone,jdbcType=VARCHAR}, #{identifyCode,jdbcType=VARCHAR}, #{identifyTime,jdbcType=TIMESTAMP}, 
       #{identifyFlag,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaSmsRegister">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaSmsRegister">
     insert into TEA_SMS_REGISTER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="telephone != null">

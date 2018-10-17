@@ -1,6 +1,7 @@
-package com.milktea.milkteauser.controller;
+package com.apple.appleuser.controller;
 
-import com.milktea.milkteauser.vo.StripeBean;
+
+import com.apple.appleuser.vo.StripeBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

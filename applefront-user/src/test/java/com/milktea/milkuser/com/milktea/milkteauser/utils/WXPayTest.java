@@ -1,6 +1,9 @@
 package com.milktea.milkuser.com.milktea.milkteauser.utils;
 
-import com.milktea.milkteauser.config.WXPayConfiguration;
+
+
+
+import com.apple.appleuser.config.WXPayConfiguration;
 import com.milktea.milkteauser.wxpay.WXPay;
 
 import java.util.HashMap;

@@ -1,8 +1,10 @@
-package com.milktea.milkteauser.controller;
-import com.milktea.milkteauser.domain.TeaPayInfo;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.PayInfoService;
-import com.milktea.milkteauser.vo.*;
+package com.apple.appleuser.controller;
+
+
+import com.apple.appleuser.domain.TeaPayInfo;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.PayInfoService;
+import com.apple.appleuser.vo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

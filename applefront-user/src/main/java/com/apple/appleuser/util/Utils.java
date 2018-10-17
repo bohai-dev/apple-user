@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.util;
+package com.apple.appleuser.util;
 
 import org.apache.commons.beanutils.BeanMap;
 import org.apache.commons.beanutils.BeanUtils;

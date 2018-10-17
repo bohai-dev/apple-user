@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.milktea.milkteauser.dao.TeaPayInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaPayInfo" >
+<mapper namespace="com.apple.appleuser.dao.TeaPayInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaPayInfo" >
     <id column="PAY_ID" property="payId" jdbcType="VARCHAR" />
     <result column="ORDER_NO" property="orderNo" jdbcType="VARCHAR" />
     <result column="PAY_SERIAL_NO" property="paySerialNo" jdbcType="VARCHAR" />
@@ -24,7 +24,7 @@
     delete from TEA_PAY_INFO
     where PAY_ID = #{payId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaPayInfo" >
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaPayInfo" >
     insert into TEA_PAY_INFO (PAY_ID, ORDER_NO, PAY_SERIAL_NO, 
       PAY_STATUS, ERROR_MSG, PAY_TIME, 
       UPDATE_TIME, PAY_TYPE)
@@ -32,7 +32,7 @@
       #{payStatus,jdbcType=CHAR}, #{errorMsg,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{payType,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaPayInfo" >
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaPayInfo" >
     insert into TEA_PAY_INFO
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="payId != null" >
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaPayInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaPayInfo" >
     update TEA_PAY_INFO
     <set >
       <if test="orderNo != null" >
@@ -114,7 +114,7 @@
     </set>
     where PAY_ID = #{payId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaPayInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaPayInfo" >
     update TEA_PAY_INFO
     set ORDER_NO = #{orderNo,jdbcType=VARCHAR},
       PAY_SERIAL_NO = #{paySerialNo,jdbcType=VARCHAR},

@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.service.impl;
+package com.apple.appleuser.service.impl;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -18,20 +18,20 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
-import com.milktea.milkteauser.controller.UserLoginController;
-import com.milktea.milkteauser.dao.TeaOrderDetailsAttrMapper;
-import com.milktea.milkteauser.dao.TeaOrderDetailsMapper;
-import com.milktea.milkteauser.dao.TeaOrderInfoMapper;
-import com.milktea.milkteauser.domain.TeaOrderDetails;
-import com.milktea.milkteauser.domain.TeaOrderDetailsAttr;
-import com.milktea.milkteauser.domain.TeaOrderInfo;
-import com.milktea.milkteauser.exception.MilkTeaErrorConstant;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.UserOrderInfoService;
-import com.milktea.milkteauser.util.CalaPrice;
-import com.milktea.milkteauser.util.HttpUtil;
-import com.milktea.milkteauser.vo.CustOrderInfoVo;
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.controller.UserLoginController;
+import com.apple.appleuser.dao.TeaOrderDetailsAttrMapper;
+import com.apple.appleuser.dao.TeaOrderDetailsMapper;
+import com.apple.appleuser.dao.TeaOrderInfoMapper;
+import com.apple.appleuser.domain.TeaOrderDetails;
+import com.apple.appleuser.domain.TeaOrderDetailsAttr;
+import com.apple.appleuser.domain.TeaOrderInfo;
+import com.apple.appleuser.exception.MilkTeaErrorConstant;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserOrderInfoService;
+import com.apple.appleuser.util.CalaPrice;
+import com.apple.appleuser.util.HttpUtil;
+import com.apple.appleuser.vo.CustOrderInfoVo;
+import com.apple.appleuser.vo.ResponseBody;
 
 
 @Service("userOrderInfoService")

@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.vo;
+package com.apple.appleuser.vo;
 
 /**
  * 分类商品请求参数

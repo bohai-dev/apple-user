@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.util;
+package com.apple.appleuser.util;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

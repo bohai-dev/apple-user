@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.service.impl;
+package com.apple.appleuser.service.impl;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -6,26 +6,26 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.milktea.milkteauser.util.Utils;
-import com.milktea.milkteauser.vo.IOTBean;
-import com.milktea.milkteauser.vo.IotResponseBean;
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.util.Utils;
+import com.apple.appleuser.vo.IOTBean;
+import com.apple.appleuser.vo.IotResponseBean;
+import com.apple.appleuser.vo.ResponseBody;
 import com.milktea.milkteauser.wxpay.WXPayUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.milktea.milkteauser.dao.TeaPayInfoMapper;
-import com.milktea.milkteauser.domain.TeaOrderInfo;
-import com.milktea.milkteauser.domain.TeaPayInfo;
-import com.milktea.milkteauser.exception.MilkTeaErrorConstant;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.PayInfoService;
-import com.milktea.milkteauser.service.UserInfoService;
-import com.milktea.milkteauser.service.UserOrderInfoService;
-import com.milktea.milkteauser.util.HttpUtil;
-import com.milktea.milkteauser.vo.StripeBean;
+import com.apple.appleuser.dao.TeaPayInfoMapper;
+import com.apple.appleuser.domain.TeaOrderInfo;
+import com.apple.appleuser.domain.TeaPayInfo;
+import com.apple.appleuser.exception.MilkTeaErrorConstant;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.PayInfoService;
+import com.apple.appleuser.service.UserInfoService;
+import com.apple.appleuser.service.UserOrderInfoService;
+import com.apple.appleuser.util.HttpUtil;
+import com.apple.appleuser.vo.StripeBean;
 import com.stripe.Stripe;
 import com.stripe.model.Charge;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,8 +1,10 @@
 package com.milktea.milkuser.com.milktea.milkteauser.utils;
 
-import com.milktea.milkteauser.service.PayInfoService;
-import com.milktea.milkteauser.vo.IOTBean;
-import com.milktea.milkteauser.vo.IotResponseBean;
+
+
+import com.apple.appleuser.service.PayInfoService;
+import com.apple.appleuser.vo.IOTBean;
+import com.apple.appleuser.vo.IotResponseBean;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

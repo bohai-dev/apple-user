@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaGoodsInfoMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaGoodsInfo">
+<mapper namespace="com.apple.appleuser.dao.TeaGoodsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaGoodsInfo">
     <id column="GOODS_ID" jdbcType="VARCHAR" property="goodsId" />
     <result column="STORE_NO" jdbcType="VARCHAR" property="storeNo" />
     <result column="CN_GOODS_NAME" jdbcType="VARCHAR" property="cnGoodsName" />
@@ -32,7 +32,7 @@
     delete from TEA_GOODS_INFO
     where GOODS_ID = #{goodsId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaGoodsInfo">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaGoodsInfo">
     insert into TEA_GOODS_INFO (GOODS_ID, STORE_NO, CN_GOODS_NAME, 
       CN_GOODS_INTRODUCTION, CN_GOODS_PICTURE_BIG, 
       CN_GOODS_PICTURE_ROUND, US_GOODS_NAME, US_GOODS_INTRODUCTION, 
@@ -46,7 +46,7 @@
       #{goodsPrice,jdbcType=DECIMAL}, #{goodsStatus,jdbcType=CHAR}, #{goodsStock,jdbcType=DECIMAL}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaGoodsInfo">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaGoodsInfo">
     insert into TEA_GOODS_INFO
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="goodsId != null">
@@ -137,7 +137,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaGoodsInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaGoodsInfo">
     update TEA_GOODS_INFO
     <set>
       <if test="storeNo != null">
@@ -182,7 +182,7 @@
     </set>
     where GOODS_ID = #{goodsId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaGoodsInfo">
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaGoodsInfo">
     update TEA_GOODS_INFO
     set STORE_NO = #{storeNo,jdbcType=VARCHAR},
       CN_GOODS_NAME = #{cnGoodsName,jdbcType=VARCHAR},

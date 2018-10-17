@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.exception;
+package com.apple.appleuser.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.milktea.milkteauser.vo.ResponseHeader;
+import com.apple.appleuser.vo.ResponseHeader;
 
 /**
  * 全局异常处理类

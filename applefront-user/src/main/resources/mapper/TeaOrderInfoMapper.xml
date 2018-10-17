@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaOrderInfoMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaOrderInfo">
+<mapper namespace="com.apple.appleuser.dao.TeaOrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaOrderInfo">
     <id column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
     <result column="USER_NO" jdbcType="VARCHAR" property="userNo" />
     <result column="TELEPHONE" jdbcType="VARCHAR" property="telephone" />
@@ -37,7 +37,7 @@
     delete from TEA_ORDER_INFO
     where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaOrderInfo">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaOrderInfo">
     insert into TEA_ORDER_INFO (ORDER_NO, USER_NO, TELEPHONE, 
       WEIXIN_ID, PROMOTION_ID, REMARK, 
       ORIG_PRICE, DISCOUNT, ORDER_PRICE, 
@@ -53,7 +53,7 @@
       #{makeFinishTime,jdbcType=TIMESTAMP}, #{bookTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=CHAR}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaOrderInfo">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaOrderInfo">
     insert into TEA_ORDER_INFO
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderNo != null">
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaOrderInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaOrderInfo">
     update TEA_ORDER_INFO
     <set>
       <if test="userNo != null">
@@ -234,7 +234,7 @@
     </set>
     where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaOrderInfo">
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaOrderInfo">
     update TEA_ORDER_INFO
     set USER_NO = #{userNo,jdbcType=VARCHAR},
       TELEPHONE = #{telephone,jdbcType=VARCHAR},

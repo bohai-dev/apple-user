@@ -1,6 +1,6 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaStoreInfo;
+import com.apple.appleuser.domain.TeaStoreInfo;
 
 public interface TeaStoreInfoMapper {
     int deleteByPrimaryKey(String storeNo);

@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.util;
+package com.apple.appleuser.util;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,15 +12,15 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.milktea.milkteauser.dao.TeaAttributesInfoMapper;
-import com.milktea.milkteauser.dao.TeaGoodsInfoMapper;
-import com.milktea.milkteauser.domain.TeaAttributesInfo;
-import com.milktea.milkteauser.domain.TeaGoodsInfo;
-import com.milktea.milkteauser.domain.TeaOrderDetails;
-import com.milktea.milkteauser.domain.TeaOrderDetailsAttr;
-import com.milktea.milkteauser.vo.CustOrderInfoVo;
-import com.milktea.milkteauser.vo.PromotionVo;
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.dao.TeaAttributesInfoMapper;
+import com.apple.appleuser.dao.TeaGoodsInfoMapper;
+import com.apple.appleuser.domain.TeaAttributesInfo;
+import com.apple.appleuser.domain.TeaGoodsInfo;
+import com.apple.appleuser.domain.TeaOrderDetails;
+import com.apple.appleuser.domain.TeaOrderDetailsAttr;
+import com.apple.appleuser.vo.CustOrderInfoVo;
+import com.apple.appleuser.vo.PromotionVo;
+import com.apple.appleuser.vo.ResponseBody;
 @Service("calaPrice")
 public class CalaPrice {
 	

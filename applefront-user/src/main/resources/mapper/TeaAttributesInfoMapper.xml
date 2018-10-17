@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaAttributesInfoMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaAttributesInfo">
+<mapper namespace="com.apple.appleuser.dao.TeaAttributesInfoMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaAttributesInfo">
     <id column="ATTR_ID" jdbcType="VARCHAR" property="attrId" />
     <result column="CN_ATTR_NAME" jdbcType="VARCHAR" property="cnAttrName" />
     <result column="US_ATTR_NAME" jdbcType="VARCHAR" property="usAttrName" />
@@ -23,7 +23,7 @@
     delete from TEA_ATTRIBUTES_INFO
     where ATTR_ID = #{attrId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaAttributesInfo">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaAttributesInfo">
     insert into TEA_ATTRIBUTES_INFO (ATTR_ID, CN_ATTR_NAME, US_ATTR_NAME, 
       ATTR_TYPE, ATTR_PRICE, DELETE_FLAG, 
       UPDATE_TIME)
@@ -31,7 +31,7 @@
       #{attrType,jdbcType=CHAR}, #{attrPrice,jdbcType=DECIMAL}, #{deleteFlag,jdbcType=CHAR}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaAttributesInfo">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaAttributesInfo">
     insert into TEA_ATTRIBUTES_INFO
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="attrId != null">
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaAttributesInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaAttributesInfo">
     update TEA_ATTRIBUTES_INFO
     <set>
       <if test="cnAttrName != null">
@@ -104,7 +104,7 @@
     </set>
     where ATTR_ID = #{attrId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaAttributesInfo">
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaAttributesInfo">
     update TEA_ATTRIBUTES_INFO
     set CN_ATTR_NAME = #{cnAttrName,jdbcType=VARCHAR},
       US_ATTR_NAME = #{usAttrName,jdbcType=VARCHAR},

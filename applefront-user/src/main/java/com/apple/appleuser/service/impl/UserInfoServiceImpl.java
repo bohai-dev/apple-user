@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.service.impl;
+package com.apple.appleuser.service.impl;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.milktea.milkteauser.dao.TeaUserInfoMapper;
-import com.milktea.milkteauser.domain.TeaUserInfo;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.UserInfoService;
+import com.apple.appleuser.dao.TeaUserInfoMapper;
+import com.apple.appleuser.domain.TeaUserInfo;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserInfoService;
 
 
 @Service

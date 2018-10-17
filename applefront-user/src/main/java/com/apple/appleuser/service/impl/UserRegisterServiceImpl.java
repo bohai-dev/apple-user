@@ -1,21 +1,21 @@
-package com.milktea.milkteauser.service.impl;
+package com.apple.appleuser.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.milktea.milkteauser.dao.TeaLoginWeixinMapper;
-import com.milktea.milkteauser.dao.TeaSmsRegisterMapper;
-import com.milktea.milkteauser.dao.TeaUserInfoMapper;
-import com.milktea.milkteauser.domain.TeaLoginWeixin;
-import com.milktea.milkteauser.domain.TeaSmsRegister;
-import com.milktea.milkteauser.domain.TeaUserInfo;
-import com.milktea.milkteauser.exception.MilkTeaErrorConstant;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.SmsService;
-import com.milktea.milkteauser.service.UserRegisterService;
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.dao.TeaLoginWeixinMapper;
+import com.apple.appleuser.dao.TeaSmsRegisterMapper;
+import com.apple.appleuser.dao.TeaUserInfoMapper;
+import com.apple.appleuser.domain.TeaLoginWeixin;
+import com.apple.appleuser.domain.TeaSmsRegister;
+import com.apple.appleuser.domain.TeaUserInfo;
+import com.apple.appleuser.exception.MilkTeaErrorConstant;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.SmsService;
+import com.apple.appleuser.service.UserRegisterService;
+import com.apple.appleuser.vo.ResponseBody;
 
 
 @Service("userRegisterService")

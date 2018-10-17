@@ -1,4 +1,6 @@
-package com.milktea.milkteauser.config;
+package com.apple.appleuser.config;
+
+
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

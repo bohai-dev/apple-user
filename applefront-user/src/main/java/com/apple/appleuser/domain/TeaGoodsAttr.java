@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.domain;
+package com.apple.appleuser.domain;
 
 public class TeaGoodsAttr extends TeaGoodsAttrKey {
     private String deleteFlag;

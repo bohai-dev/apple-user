@@ -1,8 +1,10 @@
 package com.milktea.milkuser.dao;
 
-import com.milktea.milkteauser.Application;
-import com.milktea.milkteauser.dao.TeaOrderInfoMapper;
-import com.milktea.milkteauser.domain.TeaOrderInfo;
+
+
+import com.apple.appleuser.Application;
+import com.apple.appleuser.dao.TeaOrderInfoMapper;
+import com.apple.appleuser.domain.TeaOrderInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

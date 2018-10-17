@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.service.impl;
+package com.apple.appleuser.service.impl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,17 +17,17 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
-import com.milktea.milkteauser.controller.UserLoginController;
-import com.milktea.milkteauser.dao.TeaGlobalTokenMapper;
-import com.milktea.milkteauser.dao.TeaLoginWeixinMapper;
-import com.milktea.milkteauser.domain.TeaGlobalToken;
-import com.milktea.milkteauser.domain.TeaLoginWeixin;
-import com.milktea.milkteauser.domain.TeaSaveContactVo;
-import com.milktea.milkteauser.exception.MilkTeaErrorConstant;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.UserLoginService;
-import com.milktea.milkteauser.util.HttpUtil;
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.controller.UserLoginController;
+import com.apple.appleuser.dao.TeaGlobalTokenMapper;
+import com.apple.appleuser.dao.TeaLoginWeixinMapper;
+import com.apple.appleuser.domain.TeaGlobalToken;
+import com.apple.appleuser.domain.TeaLoginWeixin;
+import com.apple.appleuser.domain.TeaSaveContactVo;
+import com.apple.appleuser.exception.MilkTeaErrorConstant;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserLoginService;
+import com.apple.appleuser.util.HttpUtil;
+import com.apple.appleuser.vo.ResponseBody;
 
 
 @Service("userLoginService")

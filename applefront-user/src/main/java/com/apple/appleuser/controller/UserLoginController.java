@@ -1,4 +1,5 @@
-package com.milktea.milkteauser.controller;
+package com.apple.appleuser.controller;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,14 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
-import com.milktea.milkteauser.domain.TeaLoginWeixin;
-import com.milktea.milkteauser.domain.TeaSaveContactVo;
-import com.milktea.milkteauser.exception.MilkTeaErrorConstant;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.UserLoginService;
-import com.milktea.milkteauser.util.HttpUtil;
-import com.milktea.milkteauser.vo.ResponseBody;
-import com.milktea.milkteauser.vo.ResponseHeader;
+import com.apple.appleuser.domain.TeaLoginWeixin;
+import com.apple.appleuser.domain.TeaSaveContactVo;
+import com.apple.appleuser.exception.MilkTeaErrorConstant;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserLoginService;
+import com.apple.appleuser.util.HttpUtil;
+import com.apple.appleuser.vo.ResponseBody;
+import com.apple.appleuser.vo.ResponseHeader;
 
 
 

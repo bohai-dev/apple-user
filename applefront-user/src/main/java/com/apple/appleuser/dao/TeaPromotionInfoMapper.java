@@ -1,6 +1,6 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaPromotionInfo;
+import com.apple.appleuser.domain.TeaPromotionInfo;
 
 public interface TeaPromotionInfoMapper {
     int deleteByPrimaryKey(String promotionId);

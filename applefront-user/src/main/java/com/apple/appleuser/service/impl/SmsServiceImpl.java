@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.service.impl;
+package com.apple.appleuser.service.impl;
 
 
 import java.util.Random;
@@ -14,9 +14,9 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
-import com.milktea.milkteauser.exception.MilkTeaErrorConstant;
-import com.milktea.milkteauser.service.SmsService;
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.exception.MilkTeaErrorConstant;
+import com.apple.appleuser.service.SmsService;
+import com.apple.appleuser.vo.ResponseBody;
 
 
 

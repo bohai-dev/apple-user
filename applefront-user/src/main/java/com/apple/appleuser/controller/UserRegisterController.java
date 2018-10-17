@@ -1,4 +1,6 @@
-package com.milktea.milkteauser.controller;
+package com.apple.appleuser.controller;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.milktea.milkteauser.domain.TeaLoginWeixin;
-import com.milktea.milkteauser.domain.TeaSmsRegister;
-import com.milktea.milkteauser.domain.TeaUserInfo;
-import com.milktea.milkteauser.exception.MilkTeaException;
-import com.milktea.milkteauser.service.UserInfoService;
-import com.milktea.milkteauser.service.UserRegisterService;
-import com.milktea.milkteauser.vo.ResponseBody;
-import com.milktea.milkteauser.vo.ResponseHeader;
+import com.apple.appleuser.domain.TeaLoginWeixin;
+import com.apple.appleuser.domain.TeaSmsRegister;
+import com.apple.appleuser.domain.TeaUserInfo;
+import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserInfoService;
+import com.apple.appleuser.service.UserRegisterService;
+import com.apple.appleuser.vo.ResponseBody;
+import com.apple.appleuser.vo.ResponseHeader;
 
 
 

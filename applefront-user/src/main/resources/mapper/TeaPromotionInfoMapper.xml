@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.milktea.milkteauser.dao.TeaPromotionInfoMapper">
-  <resultMap id="BaseResultMap" type="com.milktea.milkteauser.domain.TeaPromotionInfo">
+<mapper namespace="com.apple.appleuser.dao.TeaPromotionInfoMapper">
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.TeaPromotionInfo">
     <id column="PROMOTION_ID" jdbcType="VARCHAR" property="promotionId" />
     <result column="CN_PROMOTION_NAME" jdbcType="VARCHAR" property="cnPromotionName" />
     <result column="CN_PROMOTION_INTRODUCTION" jdbcType="VARCHAR" property="cnPromotionIntroduction" />
@@ -28,7 +28,7 @@
     delete from TEA_PROMOTION_INFO
     where PROMOTION_ID = #{promotionId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteauser.domain.TeaPromotionInfo">
+  <insert id="insert" parameterType="com.apple.appleuser.domain.TeaPromotionInfo">
     insert into TEA_PROMOTION_INFO (PROMOTION_ID, CN_PROMOTION_NAME, CN_PROMOTION_INTRODUCTION, 
       US_PROMOTION_NAME, US_PROMOTION_INTRODUCTION, 
       BEGIN_TIME, END_TIME, PROMOTION_STATUS, 
@@ -40,7 +40,7 @@
       #{storeNos,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteauser.domain.TeaPromotionInfo">
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaPromotionInfo">
     insert into TEA_PROMOTION_INFO
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="promotionId != null">
@@ -113,7 +113,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteauser.domain.TeaPromotionInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.TeaPromotionInfo">
     update TEA_PROMOTION_INFO
     <set>
       <if test="cnPromotionName != null">
@@ -149,7 +149,7 @@
     </set>
     where PROMOTION_ID = #{promotionId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteauser.domain.TeaPromotionInfo">
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.TeaPromotionInfo">
     update TEA_PROMOTION_INFO
     set CN_PROMOTION_NAME = #{cnPromotionName,jdbcType=VARCHAR},
       CN_PROMOTION_INTRODUCTION = #{cnPromotionIntroduction,jdbcType=VARCHAR},

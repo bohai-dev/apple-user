@@ -1,4 +1,4 @@
-package com.milktea.milkteauser.vo;
+package com.apple.appleuser.vo;
 
 public class StripeBean {
     //暂定四个参数，后面可以再添加

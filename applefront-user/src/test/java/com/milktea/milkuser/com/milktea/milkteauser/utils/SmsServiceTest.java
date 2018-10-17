@@ -1,16 +1,18 @@
 package com.milktea.milkuser.com.milktea.milkteauser.utils;
 
-import com.milktea.milkteauser.Application;
-import com.milktea.milkteauser.dao.TeaPayInfoMapper;
-import com.milktea.milkteauser.domain.TeaPayInfo;
+
+
+import com.apple.appleuser.Application;
+import com.apple.appleuser.dao.TeaPayInfoMapper;
+import com.apple.appleuser.domain.TeaPayInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.milktea.milkteauser.service.SmsService;
-import com.milktea.milkteauser.vo.ResponseBody;
+import com.apple.appleuser.service.SmsService;
+import com.apple.appleuser.vo.ResponseBody;
 
 import java.util.Date;
 

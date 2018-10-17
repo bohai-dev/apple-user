@@ -1,10 +1,10 @@
-package com.milktea.milkteauser.service;
+package com.apple.appleuser.service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.milktea.milkteauser.domain.TeaUserInfo;
-import com.milktea.milkteauser.exception.MilkTeaException;
+import com.apple.appleuser.domain.TeaUserInfo;
+import com.apple.appleuser.exception.MilkTeaException;
 
 
 

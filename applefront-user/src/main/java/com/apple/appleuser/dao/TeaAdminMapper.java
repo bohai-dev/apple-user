@@ -1,6 +1,8 @@
-package com.milktea.milkteauser.dao;
+package com.apple.appleuser.dao;
 
-import com.milktea.milkteauser.domain.TeaAdmin;
+
+
+import com.apple.appleuser.domain.TeaAdmin;
 
 public interface TeaAdminMapper {
     int insert(TeaAdmin record);

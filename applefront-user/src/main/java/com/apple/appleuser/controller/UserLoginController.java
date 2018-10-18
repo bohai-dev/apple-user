@@ -83,6 +83,47 @@ public class UserLoginController {
 		return responseBody;
 	}
 	
+	//按照区分得到店铺LIST
+	@RequestMapping(value="/queryClassStore", method = RequestMethod.GET)
+	public ResponseBody<JSONObject>  queryClassStore() throws MilkTeaException{
+		
+		BufferedReader in = null;
+		String result = "";
+		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
+		ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
+		JSONObject jsonObject = new JSONObject();
+		//调用商品后台，取得默认登入商铺内的商品及所有商铺
+        
+        //所有商铺 
+//		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "code=" + code + "&" + "grant_type=authorization_code";
+        String url = "http://localhost:8081/queryClassStore";
+        String urlNameString = "" ;
+        
+        urlNameString = url ;
+    
+//		String path = "http://localhost:8081/queryStores";
+        try {
+
+			HttpUtil HttpUtil = new HttpUtil();
+			Map<String,String> mapParam = new HashMap<String,String>();
+//			mapParam.put("lang", lang);
+
+			String retStr = HttpUtil.get(urlNameString);
+			System.out.println(retStr);
+			jsonObject = JSON.parseObject(retStr);
+	        responseBody.setData(jsonObject);
+			
+		
+          
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+        return responseBody;
+	
+	
+	}
+	
 	
 	//得到所有店铺LIST
 	@RequestMapping(value="/storelist", method = RequestMethod.GET)

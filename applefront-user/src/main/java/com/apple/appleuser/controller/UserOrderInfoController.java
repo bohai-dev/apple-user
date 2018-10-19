@@ -115,7 +115,7 @@ public class UserOrderInfoController {
 		JSONObject jsonObject = new JSONObject();
 		JsonObject message = new JsonObject();
 		PrintWriter out = null;
-		String path = "http://localhost:8081/queryOrdersByUserNo";
+		String path = "http://localhost:8088/queryOrdersByUserNo";
 	        
 		try {
 
@@ -192,7 +192,7 @@ public class UserOrderInfoController {
 		JSONObject jsonObject = new JSONObject();
 		JsonObject message = new JsonObject();
 		PrintWriter out = null;
-		String path = "http://localhost:8081/queryOrdersByUserNo";
+		String path = "http://localhost:8088/queryOrdersByUserNo";
 	        
 		try {
 

@@ -96,12 +96,12 @@ public class UserLoginController {
         
         //所有商铺 
 //		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "code=" + code + "&" + "grant_type=authorization_code";
-        String url = "http://localhost:8081/queryClassStore";
+        String url = "http://localhost:8088/queryClassStore";
         String urlNameString = "" ;
         
         urlNameString = url ;
     
-//		String path = "http://localhost:8081/queryStores";
+//		String path = "http://localhost:8088/queryStores";
         try {
 
 			HttpUtil HttpUtil = new HttpUtil();
@@ -137,14 +137,14 @@ public class UserLoginController {
         
         //所有商铺 
 //		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "code=" + code + "&" + "grant_type=authorization_code";
-        String url = "http://localhost:8081/queryStores";
+        String url = "http://localhost:8088/queryStores";
         String urlNameString = "" ;
         if("".equals(lang)){
         	 urlNameString = url ;
         } else {
         	urlNameString = url + "/" +lang;
         }
-//		String path = "http://localhost:8081/queryStores";
+//		String path = "http://localhost:8088/queryStores";
         try {
 
 			HttpUtil HttpUtil = new HttpUtil();
@@ -218,7 +218,7 @@ public class UserLoginController {
 		JSONObject jsonObject = new JSONObject();
 		JsonObject message = new JsonObject();
 		PrintWriter out = null;
-		String path = "http://localhost:8081/queryClassGoodsNational"; 
+		String path = "http://localhost:8088/queryClassGoodsNational"; 
 	        
         
 
@@ -254,7 +254,7 @@ public class UserLoginController {
 			JSONObject jsonObject = new JSONObject();
 			JsonObject message = new JsonObject();
 			PrintWriter out = null;
-			String path = "http://localhost:8081/queryCarouselFigureNation"; 
+			String path = "http://localhost:8088/queryCarouselFigureNation"; 
 		        
 			try {
 
@@ -287,7 +287,7 @@ public class UserLoginController {
 			JSONObject jsonObject = new JSONObject();
 			JsonObject message = new JsonObject();
 			PrintWriter out = null;
-			String path = "http://localhost:8081/queryPromotionByStoreNoNation"; 
+			String path = "http://localhost:8088/queryPromotionByStoreNoNation"; 
 		        
 			try {
 

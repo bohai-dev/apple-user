@@ -127,7 +127,7 @@ public class UserLoginController {
 	
 	//得到所有店铺LIST
 	@RequestMapping(value="/storelist", method = RequestMethod.GET)
-	public ResponseBody<JSONObject>  getStoreList(@RequestParam("lang") String lang) throws MilkTeaException{
+	public ResponseBody<JSONObject>  getStoreList() throws MilkTeaException{
 		BufferedReader in = null;
 		String result = "";
 		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
@@ -139,11 +139,9 @@ public class UserLoginController {
 //		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "code=" + code + "&" + "grant_type=authorization_code";
         String url = "http://localhost:8088/queryStores";
         String urlNameString = "" ;
-        if("".equals(lang)){
-        	 urlNameString = url ;
-        } else {
-        	urlNameString = url + "/" +lang;
-        }
+       
+        urlNameString = url ;
+    
 //		String path = "http://localhost:8088/queryStores";
         try {
 
@@ -210,7 +208,7 @@ public class UserLoginController {
 	
 	//取得店铺内的商品
 	@RequestMapping(value="/getClassGoods")
-	public ResponseBody<JSONObject>  getClassGoods(@RequestParam("storeNo") String storeNo,@RequestParam(value = "classType",required = false) String classType,@RequestParam("lang") String lang) throws MilkTeaException{
+	public ResponseBody<JSONObject>  getClassGoods(@RequestParam("storeNo") String storeNo,@RequestParam(value = "classType",required = false) String classType) throws MilkTeaException{
 		BufferedReader in = null;
 		String result = "";
 		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
@@ -228,7 +226,7 @@ public class UserLoginController {
 			Map<String,String> mapParam = new HashMap<String,String>();
 			mapParam.put("storeNo", storeNo);
 			mapParam.put("classType", classType);
-			mapParam.put("lang", lang);
+
 			String retStr = HttpUtil.post(path, mapParam);
 			System.out.println(retStr);
 			jsonObject = JSON.parseObject(retStr);
@@ -246,7 +244,7 @@ public class UserLoginController {
 	
 	//取得轮播图
 		@RequestMapping(value="/getCarouselFigure")
-		public ResponseBody<JSONObject>  getCarouselFigure(@RequestParam("storeNo") String storeNo,@RequestParam("lang") String lang) throws MilkTeaException{
+		public ResponseBody<JSONObject>  getCarouselFigure(@RequestParam("storeNo") String storeNo) throws MilkTeaException{
 			BufferedReader in = null;
 			String result = "";
 			Logger logger = LoggerFactory.getLogger(UserLoginController.class);
@@ -261,7 +259,6 @@ public class UserLoginController {
 				HttpUtil HttpUtil = new HttpUtil();
 				Map<String,String> mapParam = new HashMap<String,String>();
 				mapParam.put("storeNo", storeNo);
-				mapParam.put("lang", lang);
 				String retStr = HttpUtil.post(path, mapParam);
 				
 				System.out.println(retStr);
@@ -279,7 +276,7 @@ public class UserLoginController {
 		
 //		http://localhost:8088/queryPromotionByStoreNoNation
 		@RequestMapping(value="/queryPromotionByStoreNoNation", method = RequestMethod.GET)
-		public ResponseBody<JSONObject>  getPromotionByStoreNoNation(@RequestParam("storeNo") String storeNo,@RequestParam("lang") String lang) throws MilkTeaException{
+		public ResponseBody<JSONObject>  getPromotionByStoreNoNation(@RequestParam("storeNo") String storeNo) throws MilkTeaException{
 			BufferedReader in = null;
 			String result = "";
 			Logger logger = LoggerFactory.getLogger(UserLoginController.class);
@@ -294,7 +291,7 @@ public class UserLoginController {
 				HttpUtil HttpUtil = new HttpUtil();
 				Map<String,String> mapParam = new HashMap<String,String>();
 				mapParam.put("storeNo", storeNo);
-				mapParam.put("lang", lang);
+
 				String retStr = HttpUtil.post(path, mapParam);
 				
 				System.out.println(retStr);

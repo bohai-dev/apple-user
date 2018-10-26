@@ -20,15 +20,17 @@ public class TeaOrderDetails {
 
     private String updateTime;
     
-    private List<TeaOrderDetailsAttr> listTeaOrderDetailsAttr;
-
+    private String standardId;
     
-	public List<TeaOrderDetailsAttr> getListTeaOrderDetailsAttr() {
-		return listTeaOrderDetailsAttr;
+   
+    
+	
+	public String getStandardId() {
+		return standardId;
 	}
 
-	public void setListTeaOrderDetailsAttr(List<TeaOrderDetailsAttr> listTeaOrderDetailsAttr) {
-		this.listTeaOrderDetailsAttr = listTeaOrderDetailsAttr;
+	public void setStandardId(String standardId) {
+		this.standardId = standardId;
 	}
 
 	public String getOrderDetailId() {

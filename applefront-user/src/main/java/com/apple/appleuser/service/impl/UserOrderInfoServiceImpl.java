@@ -85,6 +85,7 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 		
 		BigDecimal origPrice = new BigDecimal(0);
 		BigDecimal discount = new BigDecimal(0);
+		//价格计算，现在价格是根据规格的价格走的。
 		CustOrderInfoTemp = calaPrice.balanceAccount(custOrderInfoVo);
 		origPrice = CustOrderInfoTemp.getOrderPrice();
 		CustOrderInfoTemp.setOrigPrice(origPrice);
@@ -96,17 +97,20 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 		
 		String promotionId = "";
 		//TODO: 取得活动优惠内容
-		promotionId = custOrderInfoVo.getPromotionId();
+		//秦安改修20181016
+//		promotionId = custOrderInfoVo.getPromotionId();
+		//没有优惠活动
+		promotionId = "";
 		CustOrderInfoTemp = calaPrice.promotionBalanceAccount(CustOrderInfoTemp,promotionId);
 		
-		//订单状态 0:已下单 1：制作完成 2:取货完成 3:外送 4:撤销
+		//订单状态 0下单成功，待发货 ；1已发货，待收货 ；2用户退货；3用户确认收货，本单完成；4系统确认收货（15天后由客服联系用户后在后台确认收货），本单完成; 5用户取消订单
 		CustOrderInfoTemp.setOrderStatus("0");
 		
 		//支付状态 0:待支付 1:支付成功 2:支付失败
 		CustOrderInfoTemp.setPayStatus("0");
 		
 		//订单类型 0:预约 1:堂吃
-		CustOrderInfoTemp.setOrderType("1");
+		CustOrderInfoTemp.setOrderType("0");
 		
 		//删除标志 0：正常 1：删除
 		CustOrderInfoTemp.setDeleteFlag("0");
@@ -133,20 +137,6 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 				teaOrderDetails.setOrderDetailId(orderDetailIdSeq);
 	    	  
 	    	  teaOrderDetailsMapper.insertSelective(teaOrderDetails);
-	    	  
-	    	  List<TeaOrderDetailsAttr> listTeaOrderDetailsAttr = new ArrayList<TeaOrderDetailsAttr>();
-			  listTeaOrderDetailsAttr = teaOrderDetails.getListTeaOrderDetailsAttr();
-			
-			  
-			  for (TeaOrderDetailsAttr teaOrderDetailsAttr : listTeaOrderDetailsAttr) {
-				  teaOrderDetailsAttr.setOrderDetailId(orderDetailIdSeq);
-				  
-				  teaOrderDetailsAttrMapper.insertSelective(teaOrderDetailsAttr);
-				
-			}
-			  
-			  
-	    	  
 		}
 		
 		return CustOrderInfoTemp;

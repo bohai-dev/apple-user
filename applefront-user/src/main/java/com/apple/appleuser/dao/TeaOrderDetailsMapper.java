@@ -1,7 +1,5 @@
 package com.apple.appleuser.dao;
 
-
-
 import org.apache.ibatis.annotations.Select;
 
 import com.apple.appleuser.domain.TeaOrderDetails;

@@ -12,12 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.apple.appleuser.dao.AppStandardMapper;
 import com.apple.appleuser.dao.TeaAttributesInfoMapper;
-import com.apple.appleuser.dao.TeaGoodsInfoMapper;
-import com.apple.appleuser.domain.TeaAttributesInfo;
-import com.apple.appleuser.domain.TeaGoodsInfo;
+import com.apple.appleuser.domain.AppStandard;
 import com.apple.appleuser.domain.TeaOrderDetails;
-import com.apple.appleuser.domain.TeaOrderDetailsAttr;
 import com.apple.appleuser.vo.CustOrderInfoVo;
 import com.apple.appleuser.vo.PromotionVo;
 import com.apple.appleuser.vo.ResponseBody;
@@ -25,7 +23,7 @@ import com.apple.appleuser.vo.ResponseBody;
 public class CalaPrice {
 	
 	@Autowired
-	TeaGoodsInfoMapper teaGoodsInfoMapper;
+	AppStandardMapper appStandardMapper;
 	@Autowired
 	TeaAttributesInfoMapper teaAttributesInfoMapper;
 	
@@ -37,6 +35,7 @@ public class CalaPrice {
 	public CustOrderInfoVo balanceAccount(CustOrderInfoVo custOrderInfoVo){
 		CustOrderInfoVo retCustOrderInfoVo = new CustOrderInfoVo();
 		
+		//价格计算，现在价格是根据规格的价格走的。
 		
 		//取得下单LIST
 		List<TeaOrderDetails> listTeaOrderDetails = custOrderInfoVo.getListTeaOrderDetails();
@@ -44,32 +43,18 @@ public class CalaPrice {
 		BigDecimal bookTotalAccount = new BigDecimal(0);
 		
 		for (TeaOrderDetails teaOrderDetails : listTeaOrderDetails) {
-			TeaGoodsInfo teaGoodsInfo = new TeaGoodsInfo();
-			teaGoodsInfo = teaGoodsInfoMapper.selectByPrimaryKey(teaOrderDetails.getGoodsId());
-			teaOrderDetails.setOrigPrice(teaGoodsInfo.getGoodsPrice());
 			
-			//取得下单配料LISt
-			List<TeaOrderDetailsAttr> listTeaOrderDetailsAttr = new ArrayList<TeaOrderDetailsAttr>();
-			listTeaOrderDetailsAttr = teaOrderDetails.getListTeaOrderDetailsAttr();
+			//秦安改修20181026 
+			AppStandard appStandard = new AppStandard();
+			appStandard = appStandardMapper.selectByPrimaryKey(teaOrderDetails.getStandardId());
+			//单价
+			teaOrderDetails.setOrigPrice(appStandard.getPrice());
 			
-			BigDecimal attrBookTotalAccount = new BigDecimal(0);
-			
-			for (TeaOrderDetailsAttr teaOrderDetailsAttr : listTeaOrderDetailsAttr) {
-				TeaAttributesInfo teaAttributesInfo = new TeaAttributesInfo();
-				
-				teaAttributesInfo = teaAttributesInfoMapper.selectByPrimaryKey(teaOrderDetailsAttr.getAttrId());
-				attrBookTotalAccount = attrBookTotalAccount.add(teaAttributesInfo.getAttrPrice());
-				
-			}
-			
-			//配料价格再计算
-			teaOrderDetails.setAttrPrice(attrBookTotalAccount);
-			
-			bookTotalAccount = bookTotalAccount.add(teaGoodsInfo.getGoodsPrice());
-			bookTotalAccount = bookTotalAccount.add(attrBookTotalAccount);
+			bookTotalAccount = bookTotalAccount.add(appStandard.getPrice());
+
 		}
 		
-		
+		//总价
 		custOrderInfoVo.setOrderPrice(bookTotalAccount);
 		
 		return custOrderInfoVo;

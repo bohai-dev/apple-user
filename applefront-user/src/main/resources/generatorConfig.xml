@@ -6,7 +6,7 @@
 	<!--该文件在后续版本中不要提交-->
     <!-- classPathEntry:数据库的JDBC驱动的jar包地址,请用自己本地的替换 -->
 	<classPathEntry
-		location="C:\Users\cxy\.m2\repository\com\oracle\ojdbc6\11.2.0\ojdbc6-11.2.0.jar" />
+		location="C:\Users\john\.m2\repository\ojdbc6\ojdbc6\6\ojdbc6-6.jar" />
 
 
 
@@ -27,7 +27,7 @@
 			userId="apple" />
 
 		<!-- 生成model模型 -->
-		<javaModelGenerator targetPackage="com.milktea.milkteauser.domain"
+		<javaModelGenerator targetPackage="com.apple.appleuser.domain"
 			targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
@@ -41,17 +41,17 @@
 
 		<!-- 对应的dao接口 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.milktea.milkteauser.dao" targetProject="src/main/java">
+			targetPackage="com.apple.appleuser.dao" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
 
 
-	<!--	<table schema="" tableName="TEA_PAY_INFO" domainObjectName="TeaPayInfo"
+		<table schema="" tableName="APP_USER_INFOR" domainObjectName="AppUserInfor"
 			enableSelectByExample="false" enableDeleteByExample="false"
 			enableCountByExample="false" enableUpdateByExample="false"
 			selectByExampleQueryId="false">
-		</table>-->
+		</table>
 		
 	</context>
 

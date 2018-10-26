@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.milktea.milkteashop.dao.AppStandardMapper" >
-  <resultMap id="BaseResultMap" type="com.milktea.milkteashop.domain.AppStandard" >
+<mapper namespace="com.apple.appleuser.dao.AppStandardMapper" >
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.AppStandard" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="GOOD_ID" property="goodId" jdbcType="VARCHAR" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
@@ -27,7 +27,7 @@
     delete from APP_STANDARD
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.milktea.milkteashop.domain.AppStandard" >
+  <insert id="insert" parameterType="com.apple.appleuser.domain.AppStandard" >
     insert into APP_STANDARD (ID, GOOD_ID, NAME, 
       DESCRIPTION, PRICE, STOCK, 
       CREATED_TIME, UPDATED_TIME, DELETE_FLAG, 
@@ -37,7 +37,7 @@
       #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=CHAR}, 
       #{showFlag,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.milktea.milkteashop.domain.AppStandard" >
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.AppStandard" >
     insert into APP_STANDARD
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.milktea.milkteashop.domain.AppStandard" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.AppStandard" >
     update APP_STANDARD
     <set >
       <if test="goodId != null" >
@@ -137,7 +137,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.milktea.milkteashop.domain.AppStandard" >
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.AppStandard" >
     update APP_STANDARD
     set GOOD_ID = #{goodId,jdbcType=VARCHAR},
       NAME = #{name,jdbcType=VARCHAR},

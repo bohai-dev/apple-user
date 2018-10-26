@@ -11,10 +11,11 @@
     <result column="ORDER_PRICE" jdbcType="DECIMAL" property="orderPrice" />
     <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime" />
     <result column="STANDARD_ID" jdbcType="VARCHAR" property="standardId" />
+    <result column="STANDARD_NUM" jdbcType="DECIMAL" property="standardNum" />
   </resultMap>
   <sql id="Base_Column_List">
     ORDER_DETAIL_ID, ORDER_NO, GOODS_ID, ORIG_PRICE, ATTR_PRICE, DISCOUNT, ORDER_PRICE, 
-    UPDATE_TIME,STANDARD_ID
+    UPDATE_TIME,STANDARD_ID,STANDARD_NUM
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -29,10 +30,10 @@
   <insert id="insert" parameterType="com.apple.appleuser.domain.TeaOrderDetails">
     insert into TEA_ORDER_DETAILS (ORDER_DETAIL_ID, ORDER_NO, GOODS_ID, 
       ORIG_PRICE, ATTR_PRICE, DISCOUNT, 
-      ORDER_PRICE, UPDATE_TIME,STANDARD_ID)
+      ORDER_PRICE, UPDATE_TIME,STANDARD_ID,STANDARD_NUM)
     values (#{orderDetailId,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, #{goodsId,jdbcType=VARCHAR}, 
       #{origPrice,jdbcType=DECIMAL}, #{attrPrice,jdbcType=DECIMAL}, #{discount,jdbcType=DECIMAL}, 
-      #{orderPrice,jdbcType=DECIMAL}, #{updateTime,jdbcType=VARCHAR},#{standardId,jdbcType=VARCHAR})
+      #{orderPrice,jdbcType=DECIMAL}, #{updateTime,jdbcType=VARCHAR},#{standardId,jdbcType=VARCHAR},#{standardNum,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.apple.appleuser.domain.TeaOrderDetails">
     insert into TEA_ORDER_DETAILS
@@ -64,6 +65,9 @@
       <if test="standardId != null">
         STANDARD_ID,
       </if>
+      <if test="standardNum != null">
+        STANDARD_NUM,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="orderDetailId != null">
@@ -92,6 +96,9 @@
       </if>
       <if test="standardId != null">
         #{standardId,jdbcType=VARCHAR},
+      </if>
+      <if test="standardNum != null">
+        #{standardNum,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -122,6 +129,9 @@
       <if test="standardId != null">
         STANDARD_ID = #{standardId,jdbcType=VARCHAR},
       </if>
+      <if test="standardNum != null">
+        STANDARD_NUM = #{standardNum,jdbcType=DECIMAL},
+      </if>
     </set>
     where ORDER_DETAIL_ID = #{orderDetailId,jdbcType=VARCHAR}
   </update>
@@ -134,7 +144,8 @@
       DISCOUNT = #{discount,jdbcType=DECIMAL},
       ORDER_PRICE = #{orderPrice,jdbcType=DECIMAL},
       UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
-      STANDARD_ID = #{standardId,jdbcType=VARCHAR}
+      STANDARD_ID = #{standardId,jdbcType=VARCHAR},
+      STANDARD_NUM = #{standardNum,jdbcType=DECIMAL}
     where ORDER_DETAIL_ID = #{orderDetailId,jdbcType=VARCHAR}
   </update>
 </mapper>

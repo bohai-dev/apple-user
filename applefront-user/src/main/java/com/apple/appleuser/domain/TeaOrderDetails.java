@@ -22,9 +22,21 @@ public class TeaOrderDetails {
     
     private String standardId;
     
+    private BigDecimal standardNum;
+    
    
     
 	
+	
+
+	public BigDecimal getStandardNum() {
+		return standardNum;
+	}
+
+	public void setStandardNum(BigDecimal standardNum) {
+		this.standardNum = standardNum;
+	}
+
 	public String getStandardId() {
 		return standardId;
 	}

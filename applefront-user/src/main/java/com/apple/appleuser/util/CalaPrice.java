@@ -47,10 +47,10 @@ public class CalaPrice {
 			//秦安改修20181026 
 			AppStandard appStandard = new AppStandard();
 			appStandard = appStandardMapper.selectByPrimaryKey(teaOrderDetails.getStandardId());
-			//单价
-			teaOrderDetails.setOrigPrice(appStandard.getPrice());
+			//同一类规格的总价
+			teaOrderDetails.setOrigPrice(appStandard.getPrice().multiply(teaOrderDetails.getStandardNum()));
 			
-			bookTotalAccount = bookTotalAccount.add(appStandard.getPrice());
+			bookTotalAccount = bookTotalAccount.add(appStandard.getPrice().multiply(teaOrderDetails.getStandardNum()));
 
 		}
 		

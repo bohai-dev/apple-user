@@ -89,6 +89,16 @@ public  class UserInfoServiceImpl implements UserInfoService {
 		appUserInforMapper.updateByPrimaryKeySelective(appUserInfor);
 		return null;
 	}
+
+	@Override
+	public Integer updateUserDefaultPostAddress(AppUserInfor appUserInfor) throws MilkTeaException {
+		//先清空数据库中的DEFAULT
+		appUserInforMapper.nullDefaultAddress();
+		//再设置新的DEFAULT
+		appUserInforMapper.setDefaultAddress(appUserInfor.getInforNo());
+		
+		return null;
+	}
 	
 	
 	

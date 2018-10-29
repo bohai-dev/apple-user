@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.apple.appleuser.domain.AppUserInfor;
 
@@ -26,4 +27,10 @@ public interface AppUserInforMapper {
     
     @Select("select APP_USER_INFOR_ID.nextval from dual")
     BigDecimal getAppUserInforId();
+    
+    @Update("udpate APP_USER_INFOR set DEFAULT_ADDRESS = '' ")
+    BigDecimal nullDefaultAddress();
+    
+    @Update("udpate APP_USER_INFOR set DEFAULT_ADDRESS = '1' where INFOR_NO = #{inforNo}")
+    BigDecimal setDefaultAddress(@Param("inforNo") BigDecimal inforNo);
 }

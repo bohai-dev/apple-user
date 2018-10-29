@@ -63,7 +63,7 @@ public class UserInfoController {
 		return  teaAdmin;
 	}
 	
-	@RequestMapping(value="/findUserPostAddress", method = RequestMethod.GET)
+	@RequestMapping(value="/findUserPostAddress", method = RequestMethod.POST)
 	public ResponseBody<List<AppUserInfor>> findUserPostAddress(String userNo) throws MilkTeaException{
 		ResponseBody<List<AppUserInfor>> responseBody = new ResponseBody<>();
 		responseBody.setData(this.userInfoService.findUserPostAddress(userNo));

@@ -81,5 +81,12 @@ public interface UserInfoService {
     */
    public Integer  updateUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException;
    
+   /**
+    * 更新用户默认地址
+    * @param figureVo
+    * @throws MilkTeaException
+    */
+   public Integer  updateUserDefaultPostAddress(AppUserInfor appUserInfor) throws MilkTeaException;
+   
    
 }

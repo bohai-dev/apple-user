@@ -4,14 +4,13 @@ package com.apple.appleuser.controller;
 
 import java.util.List;
 
-import com.apple.appleuser.domain.TeaAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apple.appleuser.domain.AppUserInfor;
+import com.apple.appleuser.domain.TeaAdmin;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.UserInfoService;
@@ -63,24 +62,33 @@ public class UserInfoController {
 		teaAdmin.setPasswd("123456");
 		return  teaAdmin;
 	}
-
 	
+	@RequestMapping(value="/findUserPostAddress", method = RequestMethod.GET)
+	public ResponseBody<List<AppUserInfor>> findUserPostAddress(String userNo) throws MilkTeaException{
+		ResponseBody<List<AppUserInfor>> responseBody = new ResponseBody<>();
+		responseBody.setData(this.userInfoService.findUserPostAddress(userNo));
+		return responseBody;
+	}
 	
+	@RequestMapping(value="/insertUserPostAddress", method = RequestMethod.POST)
+	public ResponseHeader insertUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException{
+		ResponseHeader header = new ResponseHeader();
+		this.userInfoService.insertUserPostAddress(appUserInfor);
+		return header;
+	}
 	
+	@RequestMapping(value="/deleteUserPostAddress", method = RequestMethod.POST)
+	public ResponseHeader deleteUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException{
+		ResponseHeader header = new ResponseHeader();
+		this.userInfoService.deleteUserPostAddress(appUserInfor);
+		return header;
+	}
 	
+	@RequestMapping(value="/updateUserPostAddress", method = RequestMethod.POST)
+	public ResponseHeader updateUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException{
+		ResponseHeader header = new ResponseHeader();
+		this.userInfoService.updateUserPostAddress(appUserInfor);
+		return header;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

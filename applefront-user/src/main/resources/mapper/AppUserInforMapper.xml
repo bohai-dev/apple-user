@@ -2,21 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.apple.appleuser.dao.AppUserInforMapper" >
   <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.AppUserInfor" >
+    <id column="INFOR_NO" property="inforNo" jdbcType="DECIMAL" />
     <result column="USER_NO" property="userNo" jdbcType="VARCHAR" />
     <result column="ACCEPT_NAME" property="acceptName" jdbcType="VARCHAR" />
     <result column="ACCEPT_TEL" property="acceptTel" jdbcType="VARCHAR" />
     <result column="ACCESS_ADDRESS" property="accessAddress" jdbcType="VARCHAR" />
     <result column="DEFAULT_ADDRESS" property="defaultAddress" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    INFOR_NO, USER_NO, ACCEPT_NAME, ACCEPT_TEL, ACCESS_ADDRESS, DEFAULT_ADDRESS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from APP_USER_INFOR
+    where INFOR_NO = #{inforNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from APP_USER_INFOR
+    where INFOR_NO = #{inforNo,jdbcType=DECIMAL}
+  </delete>
   <insert id="insert" parameterType="com.apple.appleuser.domain.AppUserInfor" >
-    insert into APP_USER_INFOR (USER_NO, ACCEPT_NAME, ACCEPT_TEL, 
-      ACCESS_ADDRESS, DEFAULT_ADDRESS)
-    values (#{userNo,jdbcType=VARCHAR}, #{acceptName,jdbcType=VARCHAR}, #{acceptTel,jdbcType=VARCHAR}, 
-      #{accessAddress,jdbcType=VARCHAR}, #{defaultAddress,jdbcType=VARCHAR})
+    insert into APP_USER_INFOR (INFOR_NO, USER_NO, ACCEPT_NAME, 
+      ACCEPT_TEL, ACCESS_ADDRESS, DEFAULT_ADDRESS
+      )
+    values (#{inforNo,jdbcType=DECIMAL}, #{userNo,jdbcType=VARCHAR}, #{acceptName,jdbcType=VARCHAR}, 
+      #{acceptTel,jdbcType=VARCHAR}, #{accessAddress,jdbcType=VARCHAR}, #{defaultAddress,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.apple.appleuser.domain.AppUserInfor" >
     insert into APP_USER_INFOR
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inforNo != null" >
+        INFOR_NO,
+      </if>
       <if test="userNo != null" >
         USER_NO,
       </if>
@@ -34,6 +53,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inforNo != null" >
+        #{inforNo,jdbcType=DECIMAL},
+      </if>
       <if test="userNo != null" >
         #{userNo,jdbcType=VARCHAR},
       </if>
@@ -51,4 +73,34 @@
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.AppUserInfor" >
+    update APP_USER_INFOR
+    <set >
+      <if test="userNo != null" >
+        USER_NO = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptName != null" >
+        ACCEPT_NAME = #{acceptName,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptTel != null" >
+        ACCEPT_TEL = #{acceptTel,jdbcType=VARCHAR},
+      </if>
+      <if test="accessAddress != null" >
+        ACCESS_ADDRESS = #{accessAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultAddress != null" >
+        DEFAULT_ADDRESS = #{defaultAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INFOR_NO = #{inforNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.AppUserInfor" >
+    update APP_USER_INFOR
+    set USER_NO = #{userNo,jdbcType=VARCHAR},
+      ACCEPT_NAME = #{acceptName,jdbcType=VARCHAR},
+      ACCEPT_TEL = #{acceptTel,jdbcType=VARCHAR},
+      ACCESS_ADDRESS = #{accessAddress,jdbcType=VARCHAR},
+      DEFAULT_ADDRESS = #{defaultAddress,jdbcType=VARCHAR}
+    where INFOR_NO = #{inforNo,jdbcType=DECIMAL}
+  </update>
 </mapper>

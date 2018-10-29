@@ -1,14 +1,16 @@
 package com.apple.appleuser.service.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.apple.appleuser.dao.AppUserInforMapper;
 import com.apple.appleuser.dao.TeaUserInfoMapper;
+import com.apple.appleuser.domain.AppUserInfor;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.UserInfoService;
@@ -19,6 +21,9 @@ public  class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	TeaUserInfoMapper teaUserInfoMapper;
+	
+	@Autowired
+	AppUserInforMapper appUserInforMapper;
 
 	@Override
 	public Integer insert(TeaUserInfo teaUserInfo) throws MilkTeaException {
@@ -54,6 +59,35 @@ public  class UserInfoServiceImpl implements UserInfoService {
 		
 		teaUserInfoMapper.modifyPoint(userNo,point);
 		return 0;
+	}
+
+	@Override
+	public List<AppUserInfor> findUserPostAddress(String userNo) throws MilkTeaException {
+		
+		//根据用户USERNO 会返回多条记录
+		List<AppUserInfor> listAppUserInfo = new ArrayList<AppUserInfor>();
+		listAppUserInfo = appUserInforMapper.findUserPostAddress(userNo);
+		return listAppUserInfo;
+	}
+
+	@Override
+	public Integer insertUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException {
+		
+		appUserInfor.setInforNo(appUserInforMapper.getAppUserInforId());
+		appUserInforMapper.insert(appUserInfor);
+		return null;
+	}
+
+	@Override
+	public Integer deleteUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException {
+		appUserInforMapper.deleteByPrimaryKey(appUserInfor.getInforNo());
+		return null;
+	}
+
+	@Override
+	public Integer updateUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException {
+		appUserInforMapper.updateByPrimaryKeySelective(appUserInfor);
+		return null;
 	}
 	
 	

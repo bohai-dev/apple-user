@@ -1,6 +1,10 @@
 package com.apple.appleuser.domain;
 
+import java.math.BigDecimal;
+
 public class AppUserInfor {
+    private BigDecimal inforNo;
+
     private String userNo;
 
     private String acceptName;
@@ -10,6 +14,14 @@ public class AppUserInfor {
     private String accessAddress;
 
     private String defaultAddress;
+
+    public BigDecimal getInforNo() {
+        return inforNo;
+    }
+
+    public void setInforNo(BigDecimal inforNo) {
+        this.inforNo = inforNo;
+    }
 
     public String getUserNo() {
         return userNo;

@@ -3,6 +3,7 @@ package com.apple.appleuser.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.apple.appleuser.domain.AppUserInfor;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 
@@ -43,13 +44,42 @@ public interface UserInfoService {
    
    
    /**
-    * 根据用户号 改变积分
- * @param USER_NO
- * @param point
- * @return
- * @throws MilkTeaException
- */
-public int modifyPoint(String USER_NO,BigDecimal point) throws MilkTeaException;
+     * 根据用户号 改变积分
+	 * @param USER_NO
+	 * @param point
+	 * @return
+	 * @throws MilkTeaException
+	 */
+   public int modifyPoint(String USER_NO,BigDecimal point) throws MilkTeaException;
+   
+   /**
+    * 根据ID查用户邮寄信息
+    * @param figureVo
+    * @throws MilkTeaException
+    */
+   public List<AppUserInfor> findUserPostAddress(String userNo) throws MilkTeaException;
+   
+   
+   /**
+    * 插入用户邮寄信息
+    * @param figureVo
+    * @throws MilkTeaException
+    */
+   public Integer  insertUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException;
+   
+   /**
+    * 删除用户邮寄信息
+    * @param figureVo
+    * @throws MilkTeaException
+    */
+   public Integer  deleteUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException;
+   
+   /**
+    * 更新用户邮寄信息
+    * @param figureVo
+    * @throws MilkTeaException
+    */
+   public Integer  updateUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException;
    
    
 }

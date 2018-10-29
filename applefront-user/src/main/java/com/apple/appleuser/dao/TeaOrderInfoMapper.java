@@ -24,7 +24,7 @@ public interface TeaOrderInfoMapper {
     @Select("select to_char(sysdate,'YYYYMMDD_') || 'A_' ||TEA_CUSTORDER_SEQ.nextval from dual")
     String getCustOrderSeq();
     
-    @Select("select * from TEA_ORDER_INFO where TELEPHONE = #{orderStatus}")
+    @Select("select * from TEA_ORDER_INFO where TELEPHONE = #{telephone} and ORDER_STATUS = #{flag}")
     List<TeaOrderInfo> findOrderByTelephone(@Param("telephone") String telephone,@Param("flag") String flag);
 
 

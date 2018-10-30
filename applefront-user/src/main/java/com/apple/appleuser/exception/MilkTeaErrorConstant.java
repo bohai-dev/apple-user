@@ -25,11 +25,15 @@ public enum MilkTeaErrorConstant {
     LAZY_WEIGHT("00013","非常抱歉！所选奶茶数量不足！","I'm Sorry,the MilkTea so hot!Out of stock!"),
     LOGIN_ERROR("00014","用户名，密码错误！","I'm Sorry,password error!"),
     SAVEUSERINFOR_ERROR("00015","用户保存信息错误！","I'm Sorry,Save the information error!"),
-    
-   
-    
-    
-    
+
+    ORDER_NO_REQUIRED("00016","订单编号不能为空",""),
+    USER_ID_REQUIRED("00017","用户编号不能为空",""),
+    ORDERINFO_REQUIRED("00018","没有查询到该订单信息",""),
+    ORDER_STATUS_ERROR("00019","该订单已支付或者已被取消",""),
+    USER_OPENID_ERROR("000020","没有查询到该用户的微信登录信息",""),
+
+
+
     UNKNOW_EXCEPTION("10000", "程序内部异常" , "Something wrong with program");
     
     final String errorCode;

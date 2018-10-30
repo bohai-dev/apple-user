@@ -48,7 +48,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.milktea</groupId>
-                <artifactId>milktea-user</artifactId>
+                <artifactId>apple-user</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

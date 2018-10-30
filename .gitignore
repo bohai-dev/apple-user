@@ -27,3 +27,6 @@
 /wxpay-sdk/target/
 /milktea-user/target/
 src/main/java/com/apple/appleuser/service/impl/WxpayServiceImpl.java
+
+
+/applefront-user/pom.xml

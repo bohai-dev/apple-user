@@ -484,7 +484,7 @@ public static String weiXinAppid = "wxbac9e1b7d8104470";
 
 		
 		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
-		String path = "http://localhost:8081/saveContact"; 
+		String path = "http://localhost:8088/saveContact"; 
 		try {
 
 			HttpUtil HttpUtil = new HttpUtil();

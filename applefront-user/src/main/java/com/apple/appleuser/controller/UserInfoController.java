@@ -5,8 +5,10 @@ package com.apple.appleuser.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apple.appleuser.domain.AppUserInfor;
@@ -63,29 +65,29 @@ public class UserInfoController {
 		return  teaAdmin;
 	}
 	
-	@RequestMapping(value="/findUserPostAddress", method = RequestMethod.POST)
-	public ResponseBody<List<AppUserInfor>> findUserPostAddress(String userNo) throws MilkTeaException{
+	@RequestMapping(value="/findUserPostAddress", method = RequestMethod.GET)
+	public ResponseBody<List<AppUserInfor>> findUserPostAddress(@RequestParam("userNo") String userNo) throws MilkTeaException{
 		ResponseBody<List<AppUserInfor>> responseBody = new ResponseBody<>();
 		responseBody.setData(this.userInfoService.findUserPostAddress(userNo));
 		return responseBody;
 	}
 	
 	@RequestMapping(value="/insertUserPostAddress", method = RequestMethod.POST)
-	public ResponseHeader insertUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException{
+	public ResponseHeader insertUserPostAddress(@RequestBody AppUserInfor appUserInfor) throws MilkTeaException{
 		ResponseHeader header = new ResponseHeader();
 		this.userInfoService.insertUserPostAddress(appUserInfor);
 		return header;
 	}
 	
 	@RequestMapping(value="/deleteUserPostAddress", method = RequestMethod.POST)
-	public ResponseHeader deleteUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException{
+	public ResponseHeader deleteUserPostAddress(@RequestBody AppUserInfor appUserInfor) throws MilkTeaException{
 		ResponseHeader header = new ResponseHeader();
 		this.userInfoService.deleteUserPostAddress(appUserInfor);
 		return header;
 	}
 	
 	@RequestMapping(value="/updateUserPostAddress", method = RequestMethod.POST)
-	public ResponseHeader updateUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException{
+	public ResponseHeader updateUserPostAddress(@RequestBody AppUserInfor appUserInfor) throws MilkTeaException{
 		ResponseHeader header = new ResponseHeader();
 		this.userInfoService.updateUserPostAddress(appUserInfor);
 		return header;

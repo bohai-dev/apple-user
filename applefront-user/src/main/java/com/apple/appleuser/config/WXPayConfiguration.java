@@ -12,7 +12,7 @@ import java.io.InputStream;
 
 /**
  * 微信支付配置类
- *
+ *TODO:配置
  */
 public class WXPayConfiguration  extends WXPayConfig {
 

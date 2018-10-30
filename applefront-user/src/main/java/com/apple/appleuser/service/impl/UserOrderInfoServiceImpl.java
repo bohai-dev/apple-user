@@ -135,6 +135,11 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 	    	// TODO:如果每一天都要连番从一开始则要重置SEQ
 				String orderDetailIdSeq = teaOrderDetailsMapper.getOrderDetailsSeq();
 				teaOrderDetails.setOrderDetailId(orderDetailIdSeq);
+				
+				//设置优惠为0 20181029 秦安
+				teaOrderDetails.setDiscount(new BigDecimal(0));
+				//设置订单价格为原始价格+优惠 20181029 秦安
+				teaOrderDetails.setOrderPrice(teaOrderDetails.getOrigPrice().add(teaOrderDetails.getDiscount()));
 	    	  
 	    	  teaOrderDetailsMapper.insertSelective(teaOrderDetails);
 		}
@@ -197,7 +202,7 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 		//返回0 为正常 1为扣除数量失败
 		//TODO
 		List<TeaOrderDetails> listTeaOrderDetails = new ArrayList<TeaOrderDetails>();
-		List<String> listGoodsId = new ArrayList<String>();
+		List<String> liststandardId = new ArrayList<String>();
 		int retflg = 0;
 		
 //		ListTeaOrderDetails ListTeaOrderDetails = new ListTeaOrderDetails();
@@ -212,12 +217,12 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 			ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
 			JsonObject message = new JsonObject();
 			PrintWriter out = null;
-			String path = "http://localhost:8081/deductGoodsStock"; 
+			String path = "http://localhost:8088/deductGoodsStock"; 
 			try {
 
 				HttpUtil HttpUtil = new HttpUtil();
 				Map<String,String> mapParam = new HashMap<String,String>();
-				mapParam.put("goodsId", teaOrderDetails.getGoodsId());
+				mapParam.put("standardId", teaOrderDetails.getStandardId());
 				mapParam.put("volume", "1");
 				String retStr = HttpUtil.post(path, mapParam);
 				System.out.println(retStr);
@@ -238,7 +243,7 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 			
 			if(retflg == 0){
 				//list保存当前已有的库存，用于回退，因为没有冻结
-				listGoodsId.add(teaOrderDetails.getGoodsId());
+				liststandardId.add(teaOrderDetails.getGoodsId());
 			}
 			
 		}
@@ -246,19 +251,19 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 		if(retflg == 1){
 			//因为没有冻结,所以还回去
 			
-			for (String goodsId : listGoodsId) {
+			for (String standardId : liststandardId) {
 				BufferedReader in = null;
 				String result = "";
 				Logger logger = LoggerFactory.getLogger(UserLoginController.class);
 				ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
 				JsonObject message = new JsonObject();
 				PrintWriter out = null;
-				String path = "http://localhost:8081/deductGoodsStock"; 
+				String path = "http://localhost:8088/deductGoodsStock"; 
 				try {
 
 					HttpUtil HttpUtil = new HttpUtil();
 					Map<String,String> mapParam = new HashMap<String,String>();
-					mapParam.put("goodsId", goodsId);
+					mapParam.put("standardId", standardId);
 					mapParam.put("volume", "-1");
 					String retStr = HttpUtil.post(path, mapParam);
 					System.out.println(retStr);

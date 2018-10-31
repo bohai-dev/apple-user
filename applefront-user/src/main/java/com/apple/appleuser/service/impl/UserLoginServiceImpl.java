@@ -114,6 +114,7 @@ public static String weiXinAppid = "wxbac9e1b7d8104470";
 	        in = new BufferedReader(new InputStreamReader(
 	                connection.getInputStream()));
 	        String line;
+	        
 	        while ((line = in.readLine()) != null) {
 	            result += line;
 	        }
@@ -174,11 +175,13 @@ public static String weiXinAppid = "wxbac9e1b7d8104470";
 	              }
 	              // 定义 BufferedReader输入流来读取URL的响应
 	              in = new BufferedReader(new InputStreamReader(
-	                      connection.getInputStream()));
+	                      connection.getInputStream(),"ISO-8859-1"));
 	              String line;
+	              
 	              while ((line = in.readLine()) != null) {
-	                  result += line;
+	                  result += new String(line.getBytes("ISO-8859-1"),"UTF-8");
 	              }
+//	              String changeJson = new String(result.getBytes("ISO-8859-1"),"UTF-8");
 	              teaLoginWeixin = new TeaLoginWeixin();
 	              json = JSON.parseObject(result);
 	              teaLoginWeixin.setWeixinOpenid(json.getString("openid"));

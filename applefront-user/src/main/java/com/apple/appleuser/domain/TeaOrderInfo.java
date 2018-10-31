@@ -40,7 +40,39 @@ public class TeaOrderInfo {
 
     private String deleteFlag;
 
-    private Date updateTime;
+    public String getPostAddress() {
+		return postAddress;
+	}
+
+	public void setPostAddress(String postAddress) {
+		this.postAddress = postAddress;
+	}
+
+	public String getPostTel() {
+		return postTel;
+	}
+
+	public void setPostTel(String postTel) {
+		this.postTel = postTel;
+	}
+
+	public String getPostName() {
+		return postName;
+	}
+
+	public void setPostName(String postName) {
+		this.postName = postName;
+	}
+
+	private Date updateTime;
+    
+    private String postAddress;
+    
+    private String postTel;
+    
+    private String postName;
+    
+    
 
     public String getOrderNo() {
         return orderNo;

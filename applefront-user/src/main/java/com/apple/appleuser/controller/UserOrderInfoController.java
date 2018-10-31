@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.apple.appleuser.domain.TeaOrderInfo;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -27,16 +26,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.apple.appleuser.domain.TeaOrderInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.UserOrderInfoService;
 import com.apple.appleuser.util.HttpUtil;
 import com.apple.appleuser.vo.CustOrderInfoVo;
-import com.apple.appleuser.vo.PageRequestVo;
+import com.apple.appleuser.vo.PostInfoVo;
 import com.apple.appleuser.vo.QueryOrdersRequestVo;
 import com.apple.appleuser.vo.ResponseBody;
 import com.apple.appleuser.vo.ResponseHeader;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 
 
@@ -251,8 +251,19 @@ public class UserOrderInfoController {
 	}
 	
 
-	
-	
+	/**
+	 * 在结算时根据订单插入邮寄地址收货人电话
+	 * @param orderNo
+	 * @return
+	 * @throws MilkTeaException
+	 */
+	@RequestMapping(value="/updateOrderSetPostInfo", method = RequestMethod.POST)
+	public ResponseHeader  updateOrderSetPostInfo(@RequestBody PostInfoVo postInfoVo) throws MilkTeaException{
+		ResponseHeader responseHeader = new ResponseHeader();
+		this.userOrderInfoService.updateOrderSetPostInfo(postInfoVo);
+
+		return responseHeader;
+	}
 	
 	
 	

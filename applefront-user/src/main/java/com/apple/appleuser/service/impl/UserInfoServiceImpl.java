@@ -73,6 +73,11 @@ public  class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public Integer insertUserPostAddress(AppUserInfor appUserInfor) throws MilkTeaException {
 		
+		//插入的一条是设定默认地址
+		if("1".equals(appUserInfor.getDefaultAddress())) {
+			//先清空数据库中的DEFAULT
+			appUserInforMapper.nullDefaultAddress();
+		}
 		appUserInfor.setInforNo(appUserInforMapper.getAppUserInforId());
 		appUserInforMapper.insert(appUserInfor);
 		return null;

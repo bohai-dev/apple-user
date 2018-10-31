@@ -40,5 +40,9 @@ public interface TeaOrderInfoMapper {
     //更新订单的支付状态
     @Update("update TEA_ORDER_INFO set PAY_STATUS = #{payStatus},UPDATE_TIME = sysdate where ORDER_NO = #{orderNo}")
     int updatePayStatus(@Param("orderNo")String orderNo,@Param("payStatus")String payStatus);
+    
+    //更新收货人电话地址
+    @Update("update TEA_ORDER_INFO set POST_ADDRESS = #{postAddress},POST_TEL = #{postTel},POST_NAME = #{postName},UPDATE_TIME = sysdate where ORDER_NO = #{orderNo}")
+    int updatePostInfo(@Param("orderNo")String orderNo,@Param("postAddress")String postAddress,@Param("postTel")String postTel,@Param("postName")String postName);
 
 }

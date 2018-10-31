@@ -31,6 +31,7 @@ import com.apple.appleuser.service.UserOrderInfoService;
 import com.apple.appleuser.util.CalaPrice;
 import com.apple.appleuser.util.HttpUtil;
 import com.apple.appleuser.vo.CustOrderInfoVo;
+import com.apple.appleuser.vo.PostInfoVo;
 import com.apple.appleuser.vo.ResponseBody;
 
 
@@ -68,11 +69,11 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 //            throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION, e);
 //        }
 		//CHECK 奶茶数量 是否能下单 因为没有冻结及待支付状态，只能直减，不支付的就不能自动返回
-		int retCheckNum = checkNum(custOrderInfoVo);
-		if(retCheckNum == 1){
-			logger.error(MilkTeaErrorConstant.LAZY_WEIGHT.getCnErrorMsg());
-	         throw new MilkTeaException(MilkTeaErrorConstant.LAZY_WEIGHT);
-		}
+//		int retCheckNum = checkNum(custOrderInfoVo);
+//		if(retCheckNum == 1){
+//			logger.error(MilkTeaErrorConstant.LAZY_WEIGHT.getCnErrorMsg());
+//	         throw new MilkTeaException(MilkTeaErrorConstant.LAZY_WEIGHT);
+//		}
 		
 		
 		//得到新的订单编号 YYYYMMDD_A_000000
@@ -285,11 +286,20 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 		
 		return 0;
 	}
-	
-	
-	
-	
 
+	@Override
+	public void updateOrderSetPostInfo(PostInfoVo postInfoVo) throws MilkTeaException {
+		
+		//估计orderNo做UPDATE
+		teaOrderInfoMapper.updatePostInfo(postInfoVo.getOrderNo(), postInfoVo.getPostAddress(), postInfoVo.getPostTel(), postInfoVo.getPostName());
+		
+	}
+	
+	
+	
+	
+	
+	
 
 
 	

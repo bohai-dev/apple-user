@@ -93,4 +93,11 @@ public class UserInfoController {
 		return header;
 	}
 	
+	@RequestMapping(value="/updateUserDefaultPostAddress", method = RequestMethod.POST)
+	public ResponseHeader updateUserDefaultPostAddress(@RequestBody AppUserInfor appUserInfor) throws MilkTeaException{
+		ResponseHeader header = new ResponseHeader();
+		this.userInfoService.updateUserDefaultPostAddress(appUserInfor);
+		return header;
+	}
+	
 }

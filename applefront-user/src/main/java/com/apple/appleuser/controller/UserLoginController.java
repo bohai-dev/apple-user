@@ -2,12 +2,8 @@ package com.apple.appleuser.controller;
 
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -21,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
 import com.apple.appleuser.domain.TeaLoginWeixin;
 import com.apple.appleuser.domain.TeaSaveContactVo;
-import com.apple.appleuser.exception.MilkTeaErrorConstant;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.UserLoginService;
 import com.apple.appleuser.util.HttpUtil;
 import com.apple.appleuser.vo.ResponseBody;
 import com.apple.appleuser.vo.ResponseHeader;
+import com.apple.appleuser.vo.WeixinVo;
+import com.google.gson.JsonObject;
 
 
 
@@ -63,19 +59,24 @@ public class UserLoginController {
 	
 	
 	//微信客户登入
-	@RequestMapping(value="/weixin", method = RequestMethod.GET)
-	public ResponseBody<TeaLoginWeixin>  userInfoLogin(@RequestParam("code") String code,@RequestParam("accessToken")  String accessToken,@RequestParam("openId") String openId) throws MilkTeaException{
+	@RequestMapping(value="/weixin", method = RequestMethod.POST)
+	public ResponseBody<TeaLoginWeixin>  userInfoLogin(@RequestBody WeixinVo weixinVo) throws MilkTeaException{
 		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
+		
+		System.out.println("/weixincode=" + weixinVo.getCode());
+		System.out.println("/weixinaccessToken=" + weixinVo.getAccessToken());
+		System.out.println("/weixinopenId=" + weixinVo.getOpenId());
+		
 		
 		ResponseBody<TeaLoginWeixin> responseBody = new ResponseBody<TeaLoginWeixin>();
 		
-		if("".equals(accessToken) || null == accessToken){
+		if("".equals(weixinVo.getAccessToken()) || null == weixinVo.getAccessToken()){
 			// 第一次登入
-			TeaLoginWeixin retTeaLoginWeixin = userLoginService.getTokenOpenId(code);
+			TeaLoginWeixin retTeaLoginWeixin = userLoginService.getTokenOpenId(weixinVo.getCode());
 			responseBody.setData(retTeaLoginWeixin);
 		} else {
 			//后续登入
-			TeaLoginWeixin retTeaLoginWeixin = userLoginService.getGlobalToken(code,accessToken,openId);
+			TeaLoginWeixin retTeaLoginWeixin = userLoginService.getGlobalToken(weixinVo.getCode(),weixinVo.getAccessToken(),weixinVo.getOpenId());
 			responseBody.setData(retTeaLoginWeixin);
 			
 		}

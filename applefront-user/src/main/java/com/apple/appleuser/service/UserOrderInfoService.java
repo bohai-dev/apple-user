@@ -5,6 +5,7 @@ import java.util.List;
 import com.apple.appleuser.domain.TeaOrderInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.vo.CustOrderInfoVo;
+import com.apple.appleuser.vo.PostInfoVo;
 
 
 
@@ -58,6 +59,13 @@ public List<CustOrderInfoVo> findOrderByTelephone(String telephone,String flag) 
 public TeaOrderInfo findOrderByOrderNo(String orderNo) throws MilkTeaException;
 
 
+/**
+ * 在结算时根据订单插入邮寄地址收货人电话
+ * @param telephone
+ * @param flag
+ * @throws MilkTeaException
+ */
+public void updateOrderSetPostInfo (PostInfoVo postInfoVo) throws MilkTeaException;
 
 
 }

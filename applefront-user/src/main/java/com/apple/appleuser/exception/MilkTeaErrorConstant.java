@@ -31,7 +31,7 @@ public enum MilkTeaErrorConstant {
     ORDERINFO_REQUIRED("00018","没有查询到该订单信息",""),
     ORDER_STATUS_ERROR("00019","该订单已支付或者已被取消",""),
     USER_OPENID_ERROR("000020","没有查询到该用户的微信登录信息",""),
-
+    WXPAY_ERROR("00021","威胁你支付错误",""),
 
 
     UNKNOW_EXCEPTION("10000", "程序内部异常" , "Something wrong with program");

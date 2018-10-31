@@ -2,11 +2,14 @@ package com.apple.appleuser.service.impl;
 
 import com.apple.appleuser.config.WXPayConfiguration;
 import com.apple.appleuser.dao.TeaOrderInfoMapper;
+import com.apple.appleuser.dao.TeaPayInfoMapper;
 import com.apple.appleuser.dao.TeaUserInfoMapper;
 import com.apple.appleuser.domain.TeaOrderInfo;
+import com.apple.appleuser.domain.TeaPayInfo;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaErrorConstant;
 import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.WXPayService;
 import com.apple.appleuser.util.Utils;
 import com.apple.appleuser.vo.WXPayVo;
 import com.milktea.milkteauser.wxpay.WXPay;
@@ -17,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,24 +28,27 @@ import java.util.Map;
  * Cteated by cxy on 2018/10/30
  */
 @Service
-public class WxpayServiceImpl {
+public class WxpayServiceImpl implements WXPayService {
 
     /** logger */
     private static final Logger LOGGER = LoggerFactory.getLogger(WxpayServiceImpl.class);
    //TODO:定义自己的服务器ip
-    private static final String SERVER_IP="123.12.12.123";
+    private static final String SERVER_IP="39.106.145.242";
     //TODO:定义通知url
-    private static final String NOTIFY_URL="http://www.example.com/wxpay/notify";
+    private static final String NOTIFY_URL="http://www.95cfun.top/wxpay/notify";
 
     @Autowired
     TeaOrderInfoMapper teaOrderInfoMapper;
     @Autowired
     TeaUserInfoMapper teaUserInfoMapper;
 
+    @Autowired
+    TeaPayInfoMapper teaPayInfoMapper;
+
     /**
      * 统一下单
      */
-    public void  unifiedorder(WXPayVo wxPayVo) throws MilkTeaException{
+    public  Map<String, String>  unifiedorder(WXPayVo wxPayVo) throws MilkTeaException{
         //获取订单编号
         String orderNO=wxPayVo.getOrderNO();
         //获取用户id
@@ -61,14 +68,18 @@ public class WxpayServiceImpl {
             throw new MilkTeaException(MilkTeaErrorConstant.ORDERINFO_REQUIRED);
         }
         //订单状态不是0
-        if (!teaOrderInfo.getOrderStatus().equals("0")){
+        if (teaOrderInfo.getOrderStatus().equals("1")){
             throw new MilkTeaException(MilkTeaErrorConstant.ORDER_STATUS_ERROR);
         }
         //TODO:查询用户信息
         TeaUserInfo teaUserInfo=teaUserInfoMapper.selectByPrimaryKey(userNo);
+
+        if (teaUserInfo==null ){
+            throw new MilkTeaException(MilkTeaErrorConstant.USER_OPENID_ERROR);
+        }
         String openId=teaUserInfo.getWeixinOpenid();
 
-        if (teaUserInfo==null || StringUtils.isBlank(openId)){
+        if (StringUtils.isBlank(openId)){
             throw new MilkTeaException(MilkTeaErrorConstant.USER_OPENID_ERROR);
         }
 
@@ -83,6 +94,18 @@ public class WxpayServiceImpl {
             throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION);
         }
 
+
+        TeaPayInfo teaPayInfo=new TeaPayInfo();
+        String payId=Utils.getRandomWithTime(4);
+        teaPayInfo.setPayId(payId);
+        teaPayInfo.setOrderNo(orderNO);
+        teaPayInfo.setPayStatus("0");
+        teaPayInfo.setPayTime(new Date());
+        //设置支付方式为"微信支付"
+        teaPayInfo.setPayType("WXPay");
+
+
+
         Map<String, String> data = new HashMap<String, String>();
         String body=wxPayVo.getBody();
         if (StringUtils.isBlank(body)){
@@ -90,7 +113,7 @@ public class WxpayServiceImpl {
         }
         data.put("body", body);
         //支付号
-        data.put("out_trade_no", Utils.getRandomWithTime(4));
+        data.put("out_trade_no", payId);
         data.put("device_info", "WEB");
         data.put("fee_type", "CNY");
         //金额 单位分
@@ -109,10 +132,18 @@ public class WxpayServiceImpl {
             Map<String, String> resp = wxpay.unifiedOrder(data);
             LOGGER.info("微信支付返回内容:"+resp);
             System.out.println(resp);
+            //保存支付记录
+            teaPayInfoMapper.insertSelective(teaPayInfo);
+            return  resp;
+
         } catch (Exception e) {
             e.printStackTrace();
+            throw new MilkTeaException(MilkTeaErrorConstant.WXPAY_ERROR);
         }
     }
+
+
+
 
 
 

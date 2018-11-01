@@ -151,9 +151,10 @@ public class WxPayController {
     //发起支付
     @RequestMapping("/pay")
     public ResponseBody<Map<String, String>> wxPay(@RequestBody WXPayVo wxPayVo) throws MilkTeaException {
+
         ResponseBody<Map<String, String>> responseBody = new ResponseBody<>();
         Map<String, String> resultMap = wxPayService.unifiedorder(wxPayVo);
-
+        responseBody.setData(resultMap);
         return responseBody;
     }
 

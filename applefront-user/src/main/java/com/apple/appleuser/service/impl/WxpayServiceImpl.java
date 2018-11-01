@@ -35,7 +35,7 @@ public class WxpayServiceImpl implements WXPayService {
    //TODO:定义自己的服务器ip
     private static final String SERVER_IP="39.106.145.242";
     //TODO:定义通知url
-    private static final String NOTIFY_URL="http://www.95cfun.top/wxpay/notify";
+    private static final String NOTIFY_URL="https://www.95cfun.top/wxpay/notify";
 
     @Autowired
     TeaOrderInfoMapper teaOrderInfoMapper;

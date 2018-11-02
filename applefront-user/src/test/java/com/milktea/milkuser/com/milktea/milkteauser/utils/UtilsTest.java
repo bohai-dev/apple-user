@@ -21,4 +21,10 @@ public class UtilsTest {
       System.out.println(iotResponseBean.toString());
 
   }
+
+    @Test
+    public void getTimeStamp(){
+      String timestamp=(System.currentTimeMillis()+"").substring(0,10);
+      System.out.println(timestamp);
+    }
 }

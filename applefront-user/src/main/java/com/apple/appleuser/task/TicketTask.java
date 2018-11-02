@@ -29,7 +29,7 @@ public class TicketTask {
 
 
     //两个小时执行一次
-    @Scheduled(fixedRate = 7100*1000)
+    @Scheduled(initialDelay = 5000, fixedRate = 7000*1000)
     public void RequireTicket(){
         //1、获取token
         TeaGlobalToken token= teaGlobalTokenMapper.getGlobalToken();

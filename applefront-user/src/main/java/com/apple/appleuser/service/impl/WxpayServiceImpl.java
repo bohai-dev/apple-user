@@ -13,6 +13,8 @@ import com.apple.appleuser.service.WXPayService;
 import com.apple.appleuser.util.Utils;
 import com.apple.appleuser.vo.WXPayVo;
 import com.milktea.milkteauser.wxpay.WXPay;
+import com.milktea.milkteauser.wxpay.WXPayConstants;
+import com.milktea.milkteauser.wxpay.WXPayUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -129,12 +131,56 @@ public class WxpayServiceImpl implements WXPayService {
         data.put("openid",openId);
 
         try {
+            Map<String,String> resultMap=new HashMap<>();
+
             Map<String, String> resp = wxpay.unifiedOrder(data);
             LOGGER.info("微信支付返回内容:"+resp);
-            System.out.println(resp);
+
+            String returnCode=resp.get("return_code");
+            String resultCode=resp.get("result_code");
+            if (returnCode.equals("SUCCESS") && resultCode.equals("SUCCESS")){
+
+               String prepayId=resp.get("prepay_id");
+               //获取支付签名
+                WXPayConfiguration wxPayConfig=new WXPayConfiguration();
+                Map<String,String> SignMap=new HashMap<>();
+                String timeStamp=(System.currentTimeMillis()+"").substring(0,10);
+                String nonceStr=Utils.getRandomWithTime(6);
+                String packageStr="prepay_id="+prepayId;
+                String signType="MD5";
+
+                SignMap.put("timeStamp",timeStamp);
+                SignMap.put("nonceStr",nonceStr);
+                SignMap.put("package",packageStr);
+                SignMap.put("signType",signType);
+                SignMap.put("appId",wxPayConfig.getAppID());
+
+                LOGGER.info("支付签名字符串："+SignMap);
+
+                String sign=WXPayUtil.generateSignature(SignMap,wxPayConfig.getKey(),WXPayConstants.SignType.MD5);
+
+                LOGGER.info("支付签名："+sign);
+
+
+
+                resultMap.put("timestamp",timeStamp);
+                resultMap.put("nonceStr",nonceStr);
+                resultMap.put("package",packageStr);
+                resultMap.put("signType",signType);
+                resultMap.put("paySign",sign);
+
+
+
+
+            }else {
+                throw new MilkTeaException(MilkTeaErrorConstant.WXPAY_ERROR);
+            }
+
+
+
             //保存支付记录
             teaPayInfoMapper.insertSelective(teaPayInfo);
-            return  resp;
+            return resultMap;
 
         } catch (Exception e) {
             e.printStackTrace();

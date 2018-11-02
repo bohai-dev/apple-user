@@ -37,11 +37,12 @@ public class ConfigController {
         ResponseBody<Map<String,String>> responseBody=new ResponseBody();
         //获取ticket
         String ticket = ticketTask.getTicket();
+        LOGGER.info("取得的ticket:"+ticket);
         //签名
         Map<String, String> dataMap = new HashMap<>();
 
         String nonceStr = Utils.getRandomWithTime(6);
-        String timeStamp = System.currentTimeMillis() + "";
+        String timeStamp = (System.currentTimeMillis() + "").substring(0,10);
 
         dataMap.put("noncestr", nonceStr);
         dataMap.put("jsapi_ticket", ticket);
@@ -75,15 +76,18 @@ public class ConfigController {
             if (data.get(k) != null && data.get(k).trim().length() > 0) // 参数值为空，则不参与签名
                 sb.append(k).append("=").append(data.get(k).trim()).append("&");
         }
-        String content=sb.toString();
+        String temp=sb.toString();
+        String content=sb.substring(0,temp.length()-1);
+        LOGGER.info("字符串:"+content);
         try {
             MessageDigest md = MessageDigest.getInstance("SHA1");
             byte[] array = md.digest(content.getBytes("UTF-8"));
             StringBuilder sign = new StringBuilder();
+            // 字节数组转换为 十六进制数
             for (byte item : array) {
                 sign.append(Integer.toHexString((item & 0xFF) | 0x100).substring(1, 3));
             }
-
+            LOGGER.info("取得的签名:"+sign.toString());
             return sign.toString();
         } catch (Exception e) {
             LOGGER.error("签名错误:"+e.toString());

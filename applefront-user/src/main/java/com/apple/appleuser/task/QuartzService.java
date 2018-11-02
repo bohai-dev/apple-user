@@ -82,7 +82,7 @@ public class QuartzService {
 	        }
 	        
 	    } catch (Exception e) {
-	    	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg(), e);
+	    	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg()+result, e);
 	    	return;
 	        
 	    }
@@ -102,7 +102,7 @@ public class QuartzService {
         errCode = json.getString("errcode");
         if(null != errCode){
       	  //TOKEN出错了。
-        	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg());
+        	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg()+result,result);
         	return;
         }
         //全局TOKEN 13_zWXUzf7anEw6_weLpWHqJY4oxldG6lJayeOHgfrmlc0E3vPtjUDtiWEN6ui2lbJM9z622d9uvQbPER4OXLwUZ9WS9fRPyZ8H8Gm9hpdMTipTPblST718f0Ri7uzd9hamycor12llao5xQRbvYJTdADAMXH

@@ -6,9 +6,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.apple.appleuser.util.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class QuartzService {
 	
 	public static String weiXinGrantType = "authorization_code";
 	
-	public String url = "https://api.weixin.qq.com/sns/oauth2/access_token";
+	public static final String TOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token";
 	
 	public String param;
 	
@@ -47,7 +49,7 @@ public class QuartzService {
 		//取得系统全局TOKEN 根据APPID及密码
 		//请求获得全局Access Token
 		//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
-		url = "https://api.weixin.qq.com/cgi-bin/token";
+		String url = "https://api.weixin.qq.com/cgi-bin/token";
 		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "grant_type=client_credential";
 		String result = "";
 	    BufferedReader in = null;

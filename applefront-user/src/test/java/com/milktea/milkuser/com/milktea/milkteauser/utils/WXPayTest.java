@@ -14,8 +14,8 @@ public class WXPayTest {
     /**
      * 微信支付统一下单接口（公众号）
      */
-    public void unifiedOrder()  throws Exception{
-        WXPayConfiguration config = new WXPayConfiguration();
+   /* public void unifiedOrder()  throws Exception{
+      *//*  WXPayConfiguration config = new WXPayConfiguration();
         WXPay wxpay = new WXPay(config);
 
         Map<String, String> data = new HashMap<String, String>();
@@ -45,13 +45,13 @@ public class WXPayTest {
             Map<String, String> resp = wxpay.unifiedOrder(data);
             System.out.println(resp);
 
-           /* 前台需要参数
+           *//**//* 前台需要参数
             "appId":"wx2421b1c4370ec43b",     //公众号名称，由商户传入
             "timeStamp":"1395712654",         //时间戳，自1970年以来的秒数
             "nonceStr":"e61463f8efa94090b1f366cccfbbb444", //随机串
             "package":"prepay_id=u802345jgfjsdfgsdg888",
             "signType":"MD5",         //微信签名方式：
-            "paySign":"70EA570631E4BB79628FBCA90534C63FF7FADD89" //微信签名*/
+            "paySign":"70EA570631E4BB79628FBCA90534C63FF7FADD89" //微信签名*//*
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,9 +59,9 @@ public class WXPayTest {
 
     }
 
-    /**
+    *//**
      * 微信支付统一下单接口（pc端扫码支付）
-     */
+     *//*
     public void unifiedOrder2()  throws Exception{
         WXPayConfiguration config = new WXPayConfiguration();
         WXPay wxpay = new WXPay(config);
@@ -101,5 +101,5 @@ public class WXPayTest {
         }
 
 
-    }
+    }*/
 }

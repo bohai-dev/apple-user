@@ -62,15 +62,15 @@ public class WxPayController {
             String notifyData = sb.toString();
             LOGGER.info("微信支付接收到通知：" + notifyData);
             //需要验证签名
-            WXPayConfiguration config = new WXPayConfiguration();
-            WXPay wxpay = new WXPay(config);
+           // WXPayConfiguration config = new WXPayConfiguration();
+            //WXPay wxpay = new WXPay(config);
             Map<String, String> notifyMap = WXPayUtil.xmlToMap(notifyData);  // 转换成map
 
             Map<String,String> resultMap=new HashMap<>();
             resultMap.put("return_code","SUCCESS");
             resultMap.put("return_msg","OK");
             String resultXml=WXPayUtil.mapToXml(resultMap);
-            if (wxpay.isPayResultNotifySignatureValid(notifyMap)) {
+          //  if (wxpay.isPayResultNotifySignatureValid(notifyMap)) {
                 // 签名正确
                 // 进行处理。
                 // 注意特殊情况：订单已经退款，但收到了支付结果成功的通知，不应把商户侧订单状态从退款改成支付成功
@@ -134,10 +134,11 @@ public class WxPayController {
                     LOGGER.info("微信支付接收通知遇错：" + notifyMap.get("return_msg"));
                 }
 
-            } else {
+          //  }
+          /*  else {
                 // 签名错误，如果数据里没有sign字段，也认为是签名错误
                 LOGGER.info("微信支付接收通知：" + "签名错误");
-            }
+            }*/
 
 
         } catch (Exception e) {

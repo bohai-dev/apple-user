@@ -10,6 +10,7 @@ import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaErrorConstant;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.WXPayService;
+import com.apple.appleuser.util.HttpUtil;
 import com.apple.appleuser.util.Utils;
 import com.apple.appleuser.vo.WXPayVo;
 import com.milktea.milkteauser.wxpay.WXPay;
@@ -50,7 +51,8 @@ public class WxpayServiceImpl implements WXPayService {
     /**
      * 统一下单
      */
-    public  Map<String, String>  unifiedorder(WXPayVo wxPayVo) throws MilkTeaException{
+    @Override
+    public Map<String, String> unifiedorder(WXPayVo wxPayVo) throws MilkTeaException{
         //获取订单编号
         String orderNO=wxPayVo.getOrderNO();
         //获取用户id
@@ -87,10 +89,11 @@ public class WxpayServiceImpl implements WXPayService {
 
 
 
-        WXPay wxpay = null;
+
+        WXPayConfiguration config;
         try {
-            WXPayConfiguration config = new WXPayConfiguration();
-            wxpay = new WXPay(config);
+            config = new WXPayConfiguration();
+           // wxpay = new WXPay(config);
         } catch (Exception e) {
             e.printStackTrace();
             throw new MilkTeaException(MilkTeaErrorConstant.UNKNOW_EXCEPTION);
@@ -107,12 +110,20 @@ public class WxpayServiceImpl implements WXPayService {
         teaPayInfo.setPayType("WXPay");
 
 
-
+        //统一下单
         Map<String, String> data = new HashMap<String, String>();
+
+        String timeStamp=(System.currentTimeMillis()+"").substring(0,10);
+        String nonceStr=Utils.getRandomWithTime(6);
+
         String body=wxPayVo.getBody();
         if (StringUtils.isBlank(body)){
             body="农产品购买";
         }
+        data.put("appid",config.getAppId());
+        data.put("mch_id",config.getMchId());
+        data.put("nonce_str",nonceStr);
+
         data.put("body", body);
         //支付号
         data.put("out_trade_no", payId);
@@ -127,14 +138,21 @@ public class WxpayServiceImpl implements WXPayService {
         data.put("notify_url", NOTIFY_URL);
         data.put("trade_type", "JSAPI ");  // 此处指定为公众号支付
         //data.put("product_id", "12");      //trade_type=NATIVE时（即扫码支付），此参数必传
-        //TODO:修改为用户openid
+        //用户openid
         data.put("openid",openId);
 
         try {
             Map<String,String> resultMap=new HashMap<>();
 
-            Map<String, String> resp = wxpay.unifiedOrder(data);
-            LOGGER.info("微信支付返回内容:"+resp);
+            //签名
+           String  signature=WXPayUtil.generateSignature(data,config.getKey(),WXPayConstants.SignType.MD5);
+           data.put("sign",signature);
+           //请求统一下单接口
+            String xmlParams=WXPayUtil.mapToXml(data);
+            String responeXml=HttpUtil.postText(config.getUnifiedUrl(),xmlParams);
+            LOGGER.info("统一下单返回内容:"+responeXml);
+            Map<String, String> resp = WXPayUtil.xmlToMap(responeXml);
+
 
             String returnCode=resp.get("return_code");
             String resultCode=resp.get("result_code");
@@ -143,21 +161,18 @@ public class WxpayServiceImpl implements WXPayService {
                String prepayId=resp.get("prepay_id");
                //获取支付签名
                 WXPayConfiguration wxPayConfig=new WXPayConfiguration();
-                Map<String,String> SignMap=new HashMap<>();
-                String timeStamp=(System.currentTimeMillis()+"").substring(0,10);
-                String nonceStr=Utils.getRandomWithTime(6);
+                Map<String,String> signMap=new HashMap<>();
+
                 String packageStr="prepay_id="+prepayId;
                 String signType="MD5";
 
-                SignMap.put("timeStamp",timeStamp);
-                SignMap.put("nonceStr",nonceStr);
-                SignMap.put("package",packageStr);
-                SignMap.put("signType",signType);
-                SignMap.put("appId",wxPayConfig.getAppID());
-
-                LOGGER.info("支付签名字符串："+SignMap);
-
-                String sign=WXPayUtil.generateSignature(SignMap,wxPayConfig.getKey(),WXPayConstants.SignType.MD5);
+                signMap.put("timeStamp",timeStamp);
+                signMap.put("nonceStr",nonceStr);
+                signMap.put("package",packageStr);
+                signMap.put("signType",signType);
+                signMap.put("appId",config.getAppId());
+                LOGGER.info("支付签名字符串："+signMap);
+                String sign=WXPayUtil.generateSignature(signMap,wxPayConfig.getKey(),WXPayConstants.SignType.MD5);
 
                 LOGGER.info("支付签名："+sign);
 
@@ -187,6 +202,8 @@ public class WxpayServiceImpl implements WXPayService {
             throw new MilkTeaException(MilkTeaErrorConstant.WXPAY_ERROR);
         }
     }
+
+
 
 
 

@@ -45,4 +45,20 @@ public interface TeaOrderInfoMapper {
     @Update("update TEA_ORDER_INFO set POST_ADDRESS = #{postAddress},POST_TEL = #{postTel},POST_NAME = #{postName},UPDATE_TIME = sysdate where ORDER_NO = #{orderNo}")
     int updatePostInfo(@Param("orderNo")String orderNo,@Param("postAddress")String postAddress,@Param("postTel")String postTel,@Param("postName")String postName);
 
+    //带支付状态查询
+    @Select("select * from TEA_ORDER_INFO where USER_NO = #{userNo} and ORDER_STATUS = #{orderStatus} and PAY_STATUS = #{payStatus} order by ORDER_TIME desc")
+    List<TeaOrderInfo> getPendingDeliveryInfo(@Param("userNo")String userNo,@Param("orderStatus")String orderStatus,@Param("payStatus")String payStatus);
+    
+    //不带支付状态查询
+    @Select("select * from TEA_ORDER_INFO where USER_NO = #{userNo} and ORDER_STATUS = #{orderStatus} order by ORDER_TIME desc")
+    List<TeaOrderInfo> getPendingDeliveryInfo2(@Param("userNo")String userNo,@Param("orderStatus")String orderStatus);
+    
+    //支付状态为“1”,不带订单状态，查询
+    @Select("select * from TEA_ORDER_INFO where USER_NO = #{userNo} order by ORDER_TIME desc ")
+    List<TeaOrderInfo> getPendingDeliveryInfo3(@Param("userNo")String userNo);
+    
+    //用户确认收货设置 默认为设置orderStatus = '3'
+    @Update("update TEA_ORDER_INFO set ORDER_STATUS = '3',UPDATE_TIME = sysdate where ORDER_NO = #{orderNo}")
+    int setFinishDeliveryInfo(@Param("orderNo")String orderNo);
+    
 }

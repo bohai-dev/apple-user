@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.apple.appleuser.dao.AppUserInforMapper;
+import com.apple.appleuser.dao.TeaOrderInfoMapper;
 import com.apple.appleuser.dao.TeaUserInfoMapper;
 import com.apple.appleuser.domain.AppUserInfor;
 import com.apple.appleuser.domain.TeaOrderInfo;
@@ -25,6 +26,9 @@ public  class UserInfoServiceImpl implements UserInfoService {
 	
 	@Autowired
 	AppUserInforMapper appUserInforMapper;
+	
+	@Autowired
+	TeaOrderInfoMapper teaOrderInfoMapper;
 
 	@Override
 	public Integer insert(TeaUserInfo teaUserInfo) throws MilkTeaException {
@@ -113,17 +117,61 @@ public  class UserInfoServiceImpl implements UserInfoService {
 		//payStatus:支付状态 0:待支付 1:支付成功 2:支付失败
 		List<TeaOrderInfo> listTeaOrderInfo = new ArrayList<TeaOrderInfo>();
 		
+		//待支付查询
+		if("0".equals(orderStatus) && "0".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo(userNo, orderStatus, payStatus);
+		}
 		
+		//待发货查询
+		if("0".equals(orderStatus) && "1".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo(userNo, orderStatus, payStatus);
+		}
 		
+		//待收货查询
+		if("1".equals(orderStatus) && "1".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo(userNo, orderStatus, payStatus);
+		}
 		
+		//退款查询
+		if("2".equals(orderStatus) && "1".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo(userNo, orderStatus, payStatus);
+		}
 		
+		//用户取消订单查询
+		if("5".equals(orderStatus) && "99".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo2(userNo, orderStatus);
+		}
 		
+		//用户确认收货查询
+		if("3".equals(orderStatus) && "99".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo2(userNo, orderStatus);
+		}
 		
+		//系统确认收货查询
+		if("4".equals(orderStatus) && "99".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo2(userNo, orderStatus);
+		}		
+		
+		//查询全部订单
+		//支付状态为“1”,不带订单状态，查询
+		if("99".equals(orderStatus) && "99".equals(payStatus)){
+			listTeaOrderInfo = teaOrderInfoMapper.getPendingDeliveryInfo3(userNo);
+		}
 		
 		return listTeaOrderInfo;
 		
 		
 		
+	}
+
+	@Override
+	public Integer setFinishDeliveryInfo(String orderNo) throws MilkTeaException {
+		
+		//用户确认收货设置 默认为设置orderStatus = '3'
+		teaOrderInfoMapper.setFinishDeliveryInfo(orderNo);
+		
+		
+		return null;
 	}
     
 }

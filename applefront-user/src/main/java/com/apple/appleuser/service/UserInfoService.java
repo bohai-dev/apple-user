@@ -97,5 +97,12 @@ public interface UserInfoService {
     */
    public List<TeaOrderInfo>  getPendingDeliveryInfo(String userNo,String orderStatus,String payStatus) throws MilkTeaException;
    
+   /**
+    * 用户确认收货设置
+    * @param figureVo
+    * @throws MilkTeaException
+    */
+   public Integer  setFinishDeliveryInfo(String orderNo) throws MilkTeaException;
+   
    
 }

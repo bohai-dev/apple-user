@@ -108,5 +108,12 @@ public class UserInfoController {
 		return responseBody;
 	}
 	
+	@RequestMapping(value="/setFinishDeliveryInfo", method = RequestMethod.GET)
+	public ResponseHeader setFinishDeliveryInfo(@RequestParam("orderNo") String orderNo) throws MilkTeaException{
+		ResponseHeader header = new ResponseHeader();
+		this.userInfoService.setFinishDeliveryInfo(orderNo);
+		return header;
+	}
+	
 	
 }

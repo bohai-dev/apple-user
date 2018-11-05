@@ -104,6 +104,7 @@ public class UserInfoController {
 	@RequestMapping(value="/getPendingDeliveryInfo", method = RequestMethod.GET)
 	public ResponseBody<List<TeaOrderInfo>> getPendingDeliveryInfo(@RequestParam("userNo") String userNo,@RequestParam("orderStatus") String orderStatus,@RequestParam("payStatus") String payStatus) throws MilkTeaException{
 		ResponseBody<List<TeaOrderInfo>> responseBody = new ResponseBody<>();
+		System.out.print("userNo:"+userNo+"|orderStatus:"+orderStatus + "|payStatus:"+payStatus);
 		responseBody.setData(this.userInfoService.getPendingDeliveryInfo(userNo,orderStatus,payStatus));
 		return responseBody;
 	}

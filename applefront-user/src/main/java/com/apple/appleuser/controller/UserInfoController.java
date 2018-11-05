@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apple.appleuser.domain.AppUserInfor;
 import com.apple.appleuser.domain.TeaAdmin;
+import com.apple.appleuser.domain.TeaOrderInfo;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.UserInfoService;
@@ -99,5 +100,13 @@ public class UserInfoController {
 		this.userInfoService.updateUserDefaultPostAddress(appUserInfor);
 		return header;
 	}
+	
+	@RequestMapping(value="/getPendingDeliveryInfo", method = RequestMethod.GET)
+	public ResponseBody<List<TeaOrderInfo>> getPendingDeliveryInfo(@RequestParam("userNo") String userNo,@RequestParam("orderStatus") String orderStatus,@RequestParam("payStatus") String payStatus) throws MilkTeaException{
+		ResponseBody<List<TeaOrderInfo>> responseBody = new ResponseBody<>();
+		responseBody.setData(this.userInfoService.getPendingDeliveryInfo(userNo,orderStatus,payStatus));
+		return responseBody;
+	}
+	
 	
 }

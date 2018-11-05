@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.apple.appleuser.dao.AppUserInforMapper;
 import com.apple.appleuser.dao.TeaUserInfoMapper;
 import com.apple.appleuser.domain.AppUserInfor;
+import com.apple.appleuser.domain.TeaOrderInfo;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.UserInfoService;
@@ -103,6 +104,26 @@ public  class UserInfoServiceImpl implements UserInfoService {
 		appUserInforMapper.setDefaultAddress(appUserInfor.getInforNo());
 		
 		return null;
+	}
+
+	@Override
+	public List<TeaOrderInfo> getPendingDeliveryInfo(String userNo, String orderStatus, String payStatus)
+			throws MilkTeaException {
+		//orderStatus:0下单成功，待发货 ；1已发货，待收货 ；2用户退换货；3用户确认收货，本单完成；4系统确认收货（15天后由客服联系用户后在后台确认收货），本单完成; 5用户取消订单
+		//payStatus:支付状态 0:待支付 1:支付成功 2:支付失败
+		List<TeaOrderInfo> listTeaOrderInfo = new ArrayList<TeaOrderInfo>();
+		
+		
+		
+		
+		
+		
+		
+		
+		return listTeaOrderInfo;
+		
+		
+		
 	}
     
 }

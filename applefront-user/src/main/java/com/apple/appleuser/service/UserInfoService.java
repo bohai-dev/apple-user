@@ -5,8 +5,10 @@ import java.util.List;
 
 import com.apple.appleuser.domain.AppUserInfor;
 import com.apple.appleuser.domain.TeaOrderInfo;
+import com.apple.appleuser.domain.TeaStoreInfo;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.vo.TeaOrderDetailsVo;
 
 
 
@@ -103,6 +105,17 @@ public interface UserInfoService {
     * @throws MilkTeaException
     */
    public Integer  setFinishDeliveryInfo(String orderNo) throws MilkTeaException;
+   
+   
+   /**
+    * 用户订单详细
+    * @param figureVo
+    * @throws MilkTeaException
+    */
+   public List<TeaOrderDetailsVo>  getOrderDetailInfo(String orderNo) throws MilkTeaException;
+   
+   
+   
    
    
 }

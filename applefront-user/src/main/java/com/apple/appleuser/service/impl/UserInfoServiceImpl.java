@@ -1,14 +1,24 @@
 package com.apple.appleuser.service.impl;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.apple.appleuser.controller.UserLoginController;
 import com.apple.appleuser.dao.AppUserInforMapper;
+import com.apple.appleuser.dao.TeaOrderDetailsMapper;
 import com.apple.appleuser.dao.TeaOrderInfoMapper;
 import com.apple.appleuser.dao.TeaUserInfoMapper;
 import com.apple.appleuser.domain.AppUserInfor;
@@ -16,6 +26,10 @@ import com.apple.appleuser.domain.TeaOrderInfo;
 import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.service.UserInfoService;
+import com.apple.appleuser.util.HttpUtil;
+import com.apple.appleuser.vo.ResponseBody;
+import com.apple.appleuser.vo.TeaOrderDetailsVo;
+import com.google.gson.JsonObject;
 
 
 @Service
@@ -29,6 +43,9 @@ public  class UserInfoServiceImpl implements UserInfoService {
 	
 	@Autowired
 	TeaOrderInfoMapper teaOrderInfoMapper;
+	
+	@Autowired
+	TeaOrderDetailsMapper teaOrderDetailsMapper;
 
 	@Override
 	public Integer insert(TeaUserInfo teaUserInfo) throws MilkTeaException {
@@ -173,5 +190,17 @@ public  class UserInfoServiceImpl implements UserInfoService {
 		
 		return null;
 	}
+
+	@Override
+	public List<TeaOrderDetailsVo> getOrderDetailInfo(String orderNo) throws MilkTeaException {
+		
+		List<TeaOrderDetailsVo> listTeaOrderDetailsVo = new ArrayList<TeaOrderDetailsVo>();
+		
+		listTeaOrderDetailsVo = teaOrderDetailsMapper.getListTeaOrderDetailsVo(orderNo);
+		
+		return listTeaOrderDetailsVo;
+	}
+
+	
     
 }

@@ -61,4 +61,8 @@ public interface TeaOrderInfoMapper {
     @Update("update TEA_ORDER_INFO set ORDER_STATUS = '3',UPDATE_TIME = sysdate where ORDER_NO = #{orderNo}")
     int setFinishDeliveryInfo(@Param("orderNo")String orderNo);
     
+    //用户退货 默认为设置orderStatus = '2'
+    @Update("update TEA_ORDER_INFO set ORDER_STATUS = '2',UPDATE_TIME = sysdate where ORDER_NO = #{orderNo}")
+    int setRejectedFlag(@Param("orderNo")String orderNo);
+    
 }

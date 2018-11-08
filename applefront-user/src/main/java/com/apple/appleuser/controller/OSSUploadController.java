@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,12 +69,26 @@ public class OSSUploadController {
 		
 		String osspath = "c:/ossupload/" + mediaId;
 		
-		key = mediaId;
-		int returni = downloadPicture(urlList,osspath);
-		if(returni == 0){
-			
+		
+//		int returni = downloadPicture(urlList,osspath);
+//		if(returni == 0){
+//			
+//			responseBody.setData(uploadOSS(mediaId,osspath));
+//		}
+		URL url;
+		try {
+			url = new URL(urlList);
+			FileUtils.copyURLToFile(url, new File(osspath));
 			responseBody.setData(uploadOSS(mediaId,osspath));
+			FileUtils.deleteDirectory(new File(osspath));
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		
+		
+		
+		
 		
 		
 		

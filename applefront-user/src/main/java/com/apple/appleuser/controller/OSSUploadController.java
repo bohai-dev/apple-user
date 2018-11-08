@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
@@ -28,7 +29,7 @@ import com.apple.appleuser.domain.TeaGlobalToken;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.vo.ResponseBody;
 
-@Controller
+@RestController
 public class OSSUploadController {
 	
     private static String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
@@ -40,9 +41,7 @@ public class OSSUploadController {
     private static String bucketName = "teamilk";
 
     //OSS服务器上的文件名
-    private  String key;
 
-    private  String uploadFile;
 
 
 

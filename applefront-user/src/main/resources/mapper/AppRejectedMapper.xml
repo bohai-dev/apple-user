@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.apple.appleuser.dao.AppRejectedMapper" >
+  <resultMap id="BaseResultMap" type="com.apple.appleuser.domain.AppRejected" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="REASON" property="reason" jdbcType="VARCHAR" />
+    <result column="REASON_IMAGE_PATHS" property="reasonImagePaths" jdbcType="VARCHAR" />
+    <result column="HANDLE_STATUS" property="handleStatus" jdbcType="CHAR" />
+    <result column="HANDLE_PERSON" property="handlePerson" jdbcType="VARCHAR" />
+    <result column="HANDLE_REMARK" property="handleRemark" jdbcType="VARCHAR" />
+    <result column="HANDLE_TIME" property="handleTime" jdbcType="TIMESTAMP" />
+    <result column="CONFIRM_PERSON" property="confirmPerson" jdbcType="VARCHAR" />
+    <result column="CONFIRM_TIME" property="confirmTime" jdbcType="TIMESTAMP" />
+    <result column="TRACKING_NO" property="trackingNo" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ORDER_ID, SHOP_ID, USER_ID, REASON, REASON_IMAGE_PATHS, HANDLE_STATUS, HANDLE_PERSON, 
+    HANDLE_REMARK, HANDLE_TIME, CONFIRM_PERSON, CONFIRM_TIME, TRACKING_NO, CREATE_TIME, 
+    PRICE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from APP_REJECTED
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from APP_REJECTED
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.apple.appleuser.domain.AppRejected" >
+    insert into APP_REJECTED (ID, ORDER_ID, SHOP_ID, 
+      USER_ID, REASON, REASON_IMAGE_PATHS, 
+      HANDLE_STATUS, HANDLE_PERSON, HANDLE_REMARK, 
+      HANDLE_TIME, CONFIRM_PERSON, CONFIRM_TIME, 
+      TRACKING_NO, CREATE_TIME, PRICE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, #{reasonImagePaths,jdbcType=VARCHAR}, 
+      #{handleStatus,jdbcType=CHAR}, #{handlePerson,jdbcType=VARCHAR}, #{handleRemark,jdbcType=VARCHAR}, 
+      #{handleTime,jdbcType=TIMESTAMP}, #{confirmPerson,jdbcType=VARCHAR}, #{confirmTime,jdbcType=TIMESTAMP}, 
+      #{trackingNo,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{price,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.apple.appleuser.domain.AppRejected" >
+    insert into APP_REJECTED
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="reason != null" >
+        REASON,
+      </if>
+      <if test="reasonImagePaths != null" >
+        REASON_IMAGE_PATHS,
+      </if>
+      <if test="handleStatus != null" >
+        HANDLE_STATUS,
+      </if>
+      <if test="handlePerson != null" >
+        HANDLE_PERSON,
+      </if>
+      <if test="handleRemark != null" >
+        HANDLE_REMARK,
+      </if>
+      <if test="handleTime != null" >
+        HANDLE_TIME,
+      </if>
+      <if test="confirmPerson != null" >
+        CONFIRM_PERSON,
+      </if>
+      <if test="confirmTime != null" >
+        CONFIRM_TIME,
+      </if>
+      <if test="trackingNo != null" >
+        TRACKING_NO,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonImagePaths != null" >
+        #{reasonImagePaths,jdbcType=VARCHAR},
+      </if>
+      <if test="handleStatus != null" >
+        #{handleStatus,jdbcType=CHAR},
+      </if>
+      <if test="handlePerson != null" >
+        #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="handleRemark != null" >
+        #{handleRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleTime != null" >
+        #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmPerson != null" >
+        #{confirmPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmTime != null" >
+        #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trackingNo != null" >
+        #{trackingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+       sysdate,
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.apple.appleuser.domain.AppRejected" >
+    update APP_REJECTED
+    <set >
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        REASON = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonImagePaths != null" >
+        REASON_IMAGE_PATHS = #{reasonImagePaths,jdbcType=VARCHAR},
+      </if>
+      <if test="handleStatus != null" >
+        HANDLE_STATUS = #{handleStatus,jdbcType=CHAR},
+      </if>
+      <if test="handlePerson != null" >
+        HANDLE_PERSON = #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="handleRemark != null" >
+        HANDLE_REMARK = #{handleRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleTime != null" >
+        HANDLE_TIME = #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmPerson != null" >
+        CONFIRM_PERSON = #{confirmPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmTime != null" >
+        CONFIRM_TIME = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trackingNo != null" >
+        TRACKING_NO = #{trackingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.apple.appleuser.domain.AppRejected" >
+    update APP_REJECTED
+    set ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      SHOP_ID = #{shopId,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      REASON = #{reason,jdbcType=VARCHAR},
+      REASON_IMAGE_PATHS = #{reasonImagePaths,jdbcType=VARCHAR},
+      HANDLE_STATUS = #{handleStatus,jdbcType=CHAR},
+      HANDLE_PERSON = #{handlePerson,jdbcType=VARCHAR},
+      HANDLE_REMARK = #{handleRemark,jdbcType=VARCHAR},
+      HANDLE_TIME = #{handleTime,jdbcType=TIMESTAMP},
+      CONFIRM_PERSON = #{confirmPerson,jdbcType=VARCHAR},
+      CONFIRM_TIME = #{confirmTime,jdbcType=TIMESTAMP},
+      TRACKING_NO = #{trackingNo,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      PRICE = #{price,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

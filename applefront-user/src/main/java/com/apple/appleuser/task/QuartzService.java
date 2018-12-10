@@ -82,9 +82,9 @@ public class QuartzService {
 	        }
 	        
 	    } catch (Exception e) {
-	    	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg()+result, e);
+	    	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg(), e);
 	    	return;
-	        
+
 	    }
 	    // 使用finally块来关闭输入流
 	    finally {
@@ -102,7 +102,7 @@ public class QuartzService {
         errCode = json.getString("errcode");
         if(null != errCode){
       	  //TOKEN出错了。
-        	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg()+result,result);
+        	log.error(MilkTeaErrorConstant.WEIXIN_GLOBALTOKENMISSING_FAILURE.getCnErrorMsg());
         	return;
         }
         //全局TOKEN 13_zWXUzf7anEw6_weLpWHqJY4oxldG6lJayeOHgfrmlc0E3vPtjUDtiWEN6ui2lbJM9z622d9uvQbPER4OXLwUZ9WS9fRPyZ8H8Gm9hpdMTipTPblST718f0Ri7uzd9hamycor12llao5xQRbvYJTdADAMXH
@@ -120,6 +120,39 @@ public class QuartzService {
 		log.info("取得系统TOKEN:",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),"每隔60分钟执行");
         System.out.println("取得系统TOKEN:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "，每60分钟运行一次！");
     }
+
+
+   /* public void getToken(){
+
+        Map<String,String> params=new HashMap<>();
+        params.put("grant_type","client_credential");
+        params.put("appid",weiXinAppid);
+        params.put("secret",weiXinSecret);
+
+        try {
+            String jsonStr=HttpUtil.get(TOKEN_URL,params);
+            JSONObject jsonObject=JSON.parseObject(jsonStr);
+            String errorCode=jsonObject.getString("errcode");
+            if (errorCode!=null){
+                //获取token错误
+                String errMsg=jsonObject.getString("errmsg");
+                log.error("获取token错误,errCode:"+errorCode+",errMsg:"+errMsg);
+            }else {
+                //获取token
+                String token=jsonObject.getString("access_token");
+                log.info("获取到token:"+token);
+
+                //TODO:入库
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+    }*/
 
 
 

@@ -218,7 +218,7 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 			ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
 			JsonObject message = new JsonObject();
 			PrintWriter out = null;
-			String path = "http://localhost:8088/deductGoodsStock"; 
+			String path = "http://localhost:8089/deductGoodsStock";
 			try {
 
 				HttpUtil HttpUtil = new HttpUtil();
@@ -259,7 +259,7 @@ public  class UserOrderInfoServiceImpl implements UserOrderInfoService {
 				ResponseBody<JSONObject> responseBody = new ResponseBody<JSONObject>();
 				JsonObject message = new JsonObject();
 				PrintWriter out = null;
-				String path = "http://localhost:8088/deductGoodsStock"; 
+				String path = "http://localhost:8089/deductGoodsStock";
 				try {
 
 					HttpUtil HttpUtil = new HttpUtil();

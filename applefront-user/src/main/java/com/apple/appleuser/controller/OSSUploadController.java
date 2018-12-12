@@ -32,13 +32,13 @@ import com.apple.appleuser.vo.ResponseBody;
 @RestController
 public class OSSUploadController {
 	
-    private static String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
+    private static String endpoint = "http://oss-cn-shanghai.aliyuncs.com";
 
-    private static String accessKeyId = "LTAIJsHDuEGbjkTy";
+    private static String accessKeyId = "LTAIE2MCpZVOoIva";
 
-    private static String accessKeySecret = "ggk7r1WoKRSofcJmgzrql3nsuLvHrn";
+    private static String accessKeySecret = "nFBy6hjqCJNn0AficdzbaQ3nhP6zK8";
 
-    private static String bucketName = "teamilk";
+    private static String bucketName = "ossweixin";
 
     //OSS服务器上的文件名
 

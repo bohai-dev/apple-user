@@ -23,7 +23,7 @@
 		</commentGenerator>
 		
 		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-			connectionURL="jdbc:oracle:thin:@39.106.145.242:1521:xe" password="apple"
+			connectionURL="jdbc:oracle:thin:@47.101.136.194:1521:xe" password="apple"
 			userId="apple" />
 
 		<!-- 生成model模型 -->

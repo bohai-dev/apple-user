@@ -145,7 +145,7 @@ public class UserInfoController {
 		JSONObject jsonObject = new JSONObject();
 		JsonObject message = new JsonObject();
 		PrintWriter out = null;
-		String path = "http://localhost:8088/queryStoreInfo/" + storeNo;
+		String path = "http://localhost:8089/queryStoreInfo/" + storeNo;
 	        
 		try {
 

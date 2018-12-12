@@ -33,9 +33,10 @@ import com.apple.appleuser.vo.ResponseBody;
 @Service("userLoginService")
 public  class UserLoginServiceImpl implements UserLoginService {
 	
-public static String weiXinAppid = "wxbac9e1b7d8104470";
-	
-	public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";
+    public static String weiXinAppid = "wxbac9e1b7d8104470";   // 秦安wxf5dcafab77847072
+
+
+	public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";  //0b6d50c8bc2ef790ae2ede31a3baa7be
 	
 	public static String weiXinGrantType = "authorization_code";
 	
@@ -517,7 +518,7 @@ public static String weiXinAppid = "wxbac9e1b7d8104470";
 
 		
 		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
-		String path = "http://localhost:8088/saveContact"; 
+		String path = "http://localhost:8089/saveContact";
 		try {
 
 			HttpUtil HttpUtil = new HttpUtil();

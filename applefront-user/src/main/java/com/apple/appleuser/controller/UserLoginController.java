@@ -97,12 +97,12 @@ public class UserLoginController {
         
         //所有商铺 
 //		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "code=" + code + "&" + "grant_type=authorization_code";
-        String url = "http://localhost:8088/queryClassStore";
+        String url = "http://localhost:8089/queryClassStore";
         String urlNameString = "" ;
         
         urlNameString = url ;
     
-//		String path = "http://localhost:8088/queryStores";
+//		String path = "http://localhost:8089/queryStores";
         try {
 
 			HttpUtil HttpUtil = new HttpUtil();
@@ -138,12 +138,12 @@ public class UserLoginController {
         
         //所有商铺 
 //		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "code=" + code + "&" + "grant_type=authorization_code";
-        String url = "http://localhost:8088/queryStores";
+        String url = "http://localhost:8089/queryStores";
         String urlNameString = "" ;
        
         urlNameString = url ;
     
-//		String path = "http://localhost:8088/queryStores";
+//		String path = "http://localhost:8089/queryStores";
         try {
 
 			HttpUtil HttpUtil = new HttpUtil();
@@ -217,7 +217,7 @@ public class UserLoginController {
 		JSONObject jsonObject = new JSONObject();
 		JsonObject message = new JsonObject();
 		PrintWriter out = null;
-		String path = "http://localhost:8088/queryClassGoodsNational"; 
+		String path = "http://localhost:8089/queryClassGoodsNational";
 	        
         
 
@@ -253,7 +253,7 @@ public class UserLoginController {
 			JSONObject jsonObject = new JSONObject();
 			JsonObject message = new JsonObject();
 			PrintWriter out = null;
-			String path = "http://localhost:8088/queryCarouselFigureNation"; 
+			String path = "http://localhost:8089/queryCarouselFigureNation";
 		        
 			try {
 
@@ -275,7 +275,7 @@ public class UserLoginController {
 			return responseBody;
 		}
 		
-//		http://localhost:8088/queryPromotionByStoreNoNation
+//		http://localhost:8089/queryPromotionByStoreNoNation
 		@RequestMapping(value="/queryPromotionByStoreNoNation", method = RequestMethod.GET)
 		public ResponseBody<JSONObject>  getPromotionByStoreNoNation(@RequestParam("storeNo") String storeNo) throws MilkTeaException{
 			BufferedReader in = null;
@@ -285,7 +285,7 @@ public class UserLoginController {
 			JSONObject jsonObject = new JSONObject();
 			JsonObject message = new JsonObject();
 			PrintWriter out = null;
-			String path = "http://localhost:8088/queryPromotionByStoreNoNation"; 
+			String path = "http://localhost:8089/queryPromotionByStoreNoNation";
 		        
 			try {
 

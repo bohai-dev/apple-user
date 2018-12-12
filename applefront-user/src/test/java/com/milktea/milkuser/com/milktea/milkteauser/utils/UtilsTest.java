@@ -8,6 +8,8 @@ import com.apple.appleuser.vo.IotResponseBean;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Random;
+
 public class UtilsTest {
 
   @Test
@@ -26,5 +28,13 @@ public class UtilsTest {
     public void getTimeStamp(){
       String timestamp=(System.currentTimeMillis()+"").substring(0,10);
       System.out.println(timestamp);
+    }
+
+    @Test
+    public void randomTest(){
+        Random random=new Random();
+        for (int i = 0; i < 5; i++) {
+            System.out.println(random.nextInt(10));
+        }
     }
 }

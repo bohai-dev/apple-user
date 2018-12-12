@@ -37,9 +37,9 @@ import com.google.gson.JsonObject;
 @RequestMapping("/userLogin")
 public class UserLoginController {
 
-	public static String weiXinAppid = "wxbac9e1b7d8104470";
+	//public static String weiXinAppid = "wxbac9e1b7d8104470";
 	
-	public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";
+	//public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";
 	
 	public static String weiXinGrantType = "authorization_code";
 	

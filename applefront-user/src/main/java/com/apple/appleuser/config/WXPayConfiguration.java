@@ -2,6 +2,7 @@ package com.apple.appleuser.config;
 
 
 
+import com.apple.appleuser.util.Constants;
 import com.milktea.milkteauser.wxpay.IWXPayDomain;
 import com.milktea.milkteauser.wxpay.WXPayConfig;
 
@@ -16,7 +17,7 @@ import java.io.InputStream;
  */
 public class WXPayConfiguration  {
 
-    private String appId="wxbac9e1b7d8104470";  //公众账号ID
+    private String appId=Constants.APPID;  //公众账号ID
     private String mchId="1493631082";   //商户号
     private String key="E0E1954FB86B4CDDA3DB69E13629AAA7";  //key
     private String unifiedUrl="https://api.mch.weixin.qq.com/pay/unifiedorder";

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.apple.appleuser.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,10 @@ import com.apple.appleuser.vo.ResponseBody;
 @Service("userLoginService")
 public  class UserLoginServiceImpl implements UserLoginService {
 	
-    public static String weiXinAppid = "wxbac9e1b7d8104470";   // 秦安wxf5dcafab77847072
+   // public static String weiXinAppid = "wxbac9e1b7d8104470";   // 秦安wxf5dcafab77847072
 
 
-	public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";  //0b6d50c8bc2ef790ae2ede31a3baa7be
+	//public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";  //0b6d50c8bc2ef790ae2ede31a3baa7be
 	
 	public static String weiXinGrantType = "authorization_code";
 	
@@ -88,7 +89,7 @@ public  class UserLoginServiceImpl implements UserLoginService {
 	public TeaLoginWeixin getTokenOpenId(String code) throws MilkTeaException {
 		url = "https://api.weixin.qq.com/sns/oauth2/access_token";
 		//获取code后，请求以下链接获取access_token https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
-		param = "appid=" + weiXinAppid +"&" + "secret=" + weiXinSecret + "&" + "code=" + code + "&" + "grant_type=authorization_code";
+		param = "appid=" + Constants.APPID +"&" + "secret=" + Constants.APP_SECRET + "&" + "code=" + code + "&" + "grant_type=authorization_code";
 		String result = "";
 	    BufferedReader in = null;
 	    String access_token = "";
@@ -309,7 +310,7 @@ public  class UserLoginServiceImpl implements UserLoginService {
 	private TeaLoginWeixin getrefreshToken(String code,String accessToken, String openId) throws MilkTeaException {
 		 url = "https://api.weixin.qq.com/sns/oauth2/refresh_token";
 //		 https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN
-	  		param = "appid=" + weiXinAppid +"&" + "refresh_token=" + accessToken + "&" + "grant_type=refresh_token";
+	  		param = "appid=" + Constants.APPID +"&" + "refresh_token=" + accessToken + "&" + "grant_type=refresh_token";
 	  		String result = "";
 		    BufferedReader in = null;
 	        in = null;

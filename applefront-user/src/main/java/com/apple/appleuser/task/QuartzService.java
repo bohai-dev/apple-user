@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.apple.appleuser.util.Constants;
 import com.apple.appleuser.util.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +29,9 @@ import com.apple.appleuser.exception.MilkTeaErrorConstant;
 public class QuartzService {
     static Logger log = LoggerFactory.getLogger(QuartzService.class);
 
-    public static String weiXinAppid = "wxbac9e1b7d8104470";
+    //public static String weiXinAppid = "wxbac9e1b7d8104470";
 
-    public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";
+    //public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";
 
     public static String weiXinGrantType = "authorization_code";
 
@@ -47,8 +48,8 @@ public class QuartzService {
 
         Map<String, String> params = new HashMap<>();
         params.put("grant_type", "client_credential");
-        params.put("appid", weiXinAppid);
-        params.put("secret", weiXinSecret);
+        params.put("appid", Constants.APPID);
+        params.put("secret", Constants.APP_SECRET);
 
         try {
             String jsonStr = HttpUtil.get(TOKEN_URL, params);

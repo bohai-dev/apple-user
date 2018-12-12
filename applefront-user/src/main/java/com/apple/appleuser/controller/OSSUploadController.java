@@ -79,7 +79,9 @@ public class OSSUploadController {
 			url = new URL(urlList);
 			FileUtils.copyURLToFile(url, new File(osspath));
 			responseBody.setData(uploadOSS(mediaId,osspath));
-			FileUtils.deleteDirectory(new File(osspath));
+			File file = new File(osspath);
+			file.delete();
+//			FileUtils.deleteDirectory(new File(osspath));
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -189,7 +191,7 @@ public class OSSUploadController {
 
              System.out.println(multipartUploadResult.getETag());
              
-             retStr = multipartUploadResult.getETag();
+             retStr = multipartUploadResult.getLocation();
 
              
 

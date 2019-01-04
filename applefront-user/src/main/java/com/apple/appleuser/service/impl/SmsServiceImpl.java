@@ -4,6 +4,8 @@ package com.apple.appleuser.service.impl;
 import java.util.Random;
 
 import com.alibaba.fastjson.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.aliyuncs.DefaultAcsClient;
@@ -28,9 +30,12 @@ public class SmsServiceImpl implements SmsService {
 	 String domain = "dysmsapi.aliyuncs.com";//短信API产品域名（接口地址固定，无需修改）
 			
 	//替换成你的AK
-	 String accessKeyId = "LTAIJsHDuEGbjkTy";//你的accessKeyId,参考本文档步骤2
-	 String accessKeySecret = "ggk7r1WoKRSofcJmgzrql3nsuLvHrn";//你的accessKeySecret，参考本文档步骤2
+	 String accessKeyId = "LTAIE2MCpZVOoIva";//你的accessKeyId,参考本文档步骤2
+	 String accessKeySecret = "nFBy6hjqCJNn0AficdzbaQ3nhP6zK8";//你的accessKeySecret，参考本文档步骤2
+	 String SMS_SIGN="秦安县秦陇孵化器电子商务";     //短信签名
 
+	/** logger */
+	private static final Logger LOGGER = LoggerFactory.getLogger(SmsServiceImpl.class);
 	/**
 	 * 发送验证码类短信
 	 */
@@ -60,8 +65,8 @@ public class SmsServiceImpl implements SmsService {
 		 request.setMethod(MethodType.POST);
 		 //必填:待发送手机号。支持以逗号分隔的形式进行批量调用，批量上限为1000个手机号码,批量调用相对于单条调用及时性稍有延迟,验证码类型的短信推荐使用单条调用的方式；发送国际/港澳台消息时，接收号码格式为00+国际区号+号码，如“0085200000000”
 		 request.setPhoneNumbers(phoneNumber);
-		 //必填:短信签名-可在短信控制台中找到
-		 request.setSignName("乔升科技");
+		 //TODO:必填:短信签名-可在短信控制台中找到
+		 request.setSignName(SMS_SIGN);
 		 //必填:短信模板-可在短信控制台中找到
 		 request.setTemplateCode(templateCode);
 		 
@@ -100,7 +105,7 @@ public class SmsServiceImpl implements SmsService {
 				//请求成功
 				responseBean.setData(code);
 			}else {
-				
+				LOGGER.error("发送短信失败："+sendSmsResponse.getCode()+":"+sendSmsResponse.getMessage());
 				 responseBean.setRspCode(MilkTeaErrorConstant.SMS_FAILURE.getErrorCode());
 			     responseBean.setCnErrorMsg(MilkTeaErrorConstant.SMS_FAILURE.getCnErrorMsg());
 			}
@@ -142,9 +147,8 @@ public class SmsServiceImpl implements SmsService {
 		 request.setMethod(MethodType.POST);
 		 //必填:待发送手机号。支持以逗号分隔的形式进行批量调用，批量上限为1000个手机号码,批量调用相对于单条调用及时性稍有延迟,验证码类型的短信推荐使用单条调用的方式；发送国际/港澳台消息时，接收号码格式为00+国际区号+号码，如“0085200000000”
 		 request.setPhoneNumbers(phoneNumber);
-		 //必填:短信签名-可在短信控制台中找到
-		 // request.setSignName("乔升科技");
-		  request.setSignName("creativefun");
+		 //TODO:必填:短信签名-可在短信控制台中找到
+		  request.setSignName(SMS_SIGN);
 		 //必填:短信模板-可在短信控制台中找到
 		 request.setTemplateCode(templateCode);		 
 		

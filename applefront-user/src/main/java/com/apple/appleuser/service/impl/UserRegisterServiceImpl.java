@@ -72,7 +72,7 @@ public  class UserRegisterServiceImpl implements UserRegisterService {
 
 		//调用阿里云短信发送
 		// TODO: 调用阿里云短信发送 参数 电话号码 验证码为随机数
-		ResponseBody<String> responseStr = smsService.sendVerCodeSMS(telephone,"SMS_152461076");
+		ResponseBody<String> responseStr = smsService.sendVerCodeSMS(telephone,"SMS_152610463");
 		
 		//写入数据库
 		teaSmsRegisterMapper.insertSMSReg(telephone, responseStr.getData());

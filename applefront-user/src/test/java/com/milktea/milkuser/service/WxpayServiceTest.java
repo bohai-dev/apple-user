@@ -2,6 +2,7 @@ package com.milktea.milkuser.service;
 
 import com.apple.appleuser.Application;
 import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserRegisterService;
 import com.apple.appleuser.service.impl.WxpayServiceImpl;
 import com.apple.appleuser.vo.WXPayVo;
 import org.junit.Test;
@@ -19,6 +20,8 @@ public class WxpayServiceTest {
 
     @Autowired
     WxpayServiceImpl wxpayService;
+    @Autowired
+    UserRegisterService userRegisterService;
 
     @Test
     public void unifiedorderTest(){
@@ -28,6 +31,15 @@ public class WxpayServiceTest {
         wxPayVo.setUserId("21");
         try {
             wxpayService.unifiedorder(wxPayVo);
+        } catch (MilkTeaException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void sendSMS(){
+        try {
+            int result = userRegisterService.createPollCode("17621503621");
         } catch (MilkTeaException e) {
             e.printStackTrace();
         }

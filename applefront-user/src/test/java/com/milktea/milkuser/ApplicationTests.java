@@ -18,7 +18,7 @@ public class ApplicationTests {
 
     @Test
     public void contextLoads() {
-    	this.quartzService.timerToNow();
+    	//this.quartzService.timerToNow();
     }
 
 }

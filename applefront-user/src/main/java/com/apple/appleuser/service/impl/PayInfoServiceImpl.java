@@ -28,8 +28,6 @@ import com.apple.appleuser.util.HttpUtil;
 import com.apple.appleuser.vo.StripeBean;
 import com.stripe.Stripe;
 import com.stripe.model.Charge;
-import org.springframework.web.bind.annotation.RequestBody;
-import sun.rmi.runtime.Log;
 
 @Service
 public class PayInfoServiceImpl implements PayInfoService {

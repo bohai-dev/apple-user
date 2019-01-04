@@ -36,7 +36,7 @@ public class WxpayServiceImpl implements WXPayService {
     /** logger */
     private static final Logger LOGGER = LoggerFactory.getLogger(WxpayServiceImpl.class);
    //TODO:定义自己的服务器ip
-    private static final String SERVER_IP="39.106.145.242";
+    private static final String SERVER_IP="47.101.136.194";
     //TODO:定义通知url
     private static final String NOTIFY_URL="https://www.95cfun.top/wxpay/notify";
 
@@ -87,6 +87,7 @@ public class WxpayServiceImpl implements WXPayService {
             throw new MilkTeaException(MilkTeaErrorConstant.USER_OPENID_ERROR);
         }
 
+        LOGGER.info("用户OpendId："+openId);
 
 
 

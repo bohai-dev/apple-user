@@ -3,6 +3,8 @@ package com.apple.appleuser.dao;
 
 
 import com.apple.appleuser.domain.TeaLoginWeixin;
+import org.apache.ibatis.annotations.Mapper;
+
 
 public interface TeaLoginWeixinMapper {
     int deleteByPrimaryKey(String weixinOpenid);

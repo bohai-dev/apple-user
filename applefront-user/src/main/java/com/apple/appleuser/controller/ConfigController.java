@@ -3,6 +3,7 @@ package com.apple.appleuser.controller;
 import com.apple.appleuser.exception.MilkTeaErrorConstant;
 import com.apple.appleuser.exception.MilkTeaException;
 import com.apple.appleuser.task.TicketTask;
+import com.apple.appleuser.util.Constants;
 import com.apple.appleuser.util.Utils;
 import com.apple.appleuser.vo.ResponseBody;
 import com.milktea.milkteauser.wxpay.WXPayConstants;
@@ -52,7 +53,7 @@ public class ConfigController {
         String signature = getSignature(dataMap);
 
         Map<String,String> resultMap=new HashMap<>();
-        resultMap.put("appId","wxbac9e1b7d8104470");
+        resultMap.put("appId",Constants.APPID);
         resultMap.put("timestamp",timeStamp);
         resultMap.put("nonceStr",nonceStr);
         resultMap.put("signature",signature);

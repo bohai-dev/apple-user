@@ -104,7 +104,7 @@ public class UserRegisterController {
 	}
 	
 	/**
-	 * 根据手机号查找客户信息，如果为NULL返回TeaUserInfo
+	 * 根据手机号查找客户信息，如果不为NULL返回TeaUserInfo
 	 * @param teaUserInfo
 	 * @return TeaUserInfo
 	 * @throws MilkTeaException

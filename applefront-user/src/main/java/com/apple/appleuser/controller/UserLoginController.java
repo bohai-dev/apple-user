@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.apple.appleuser.dao.TeaLoginWeixinMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +38,6 @@ import com.google.gson.JsonObject;
 @RequestMapping("/userLogin")
 public class UserLoginController {
 
-	//public static String weiXinAppid = "wxbac9e1b7d8104470";
-	
-	//public static String weiXinSecret = "08695399b120b9ed523db01ddd51d38d";
-	
-	public static String weiXinGrantType = "authorization_code";
 	
 	public String url = "https://api.weixin.qq.com/sns/oauth2/access_token";
 	
@@ -49,6 +45,7 @@ public class UserLoginController {
 	
 	@Autowired
     private UserLoginService userLoginService;
+
 	
 	@RequestMapping(value="/saveContact", method = RequestMethod.POST)
 	public ResponseHeader saveContact(@RequestBody TeaSaveContactVo teaSaveContactVo) throws MilkTeaException{
@@ -61,26 +58,14 @@ public class UserLoginController {
 	//微信客户登入
 	@RequestMapping(value="/weixin", method = RequestMethod.POST)
 	public ResponseBody<TeaLoginWeixin>  userInfoLogin(@RequestBody WeixinVo weixinVo) throws MilkTeaException{
-		Logger logger = LoggerFactory.getLogger(UserLoginController.class);
-		
-		System.out.println("/weixincode=" + weixinVo.getCode());
-		System.out.println("/weixinaccessToken=" + weixinVo.getAccessToken());
-		System.out.println("/weixinopenId=" + weixinVo.getOpenId());
-		
-		
+
 		ResponseBody<TeaLoginWeixin> responseBody = new ResponseBody<TeaLoginWeixin>();
-		
-		if("".equals(weixinVo.getAccessToken()) || null == weixinVo.getAccessToken()){
-			// 第一次登入
-			TeaLoginWeixin retTeaLoginWeixin = userLoginService.getTokenOpenId(weixinVo.getCode());
-			responseBody.setData(retTeaLoginWeixin);
-		} else {
-			//后续登入
-			TeaLoginWeixin retTeaLoginWeixin = userLoginService.getGlobalToken(weixinVo.getCode(),weixinVo.getAccessToken(),weixinVo.getOpenId());
-			responseBody.setData(retTeaLoginWeixin);
-			
-		}
-		
+
+		String code=weixinVo.getCode();
+		TeaLoginWeixin teaLoginWeixin=userLoginService.weixinLogin(code);
+
+		responseBody.setData(teaLoginWeixin);
+
 		return responseBody;
 	}
 	
@@ -161,49 +146,7 @@ public class UserLoginController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
-        
-        
-//        try {
-//	        URL realUrl = new URL(urlNameString);
-//	        // 打开和URL之间的连接
-//	        URLConnection connection = realUrl.openConnection();
-//	        // 设置通用的请求属性
-//	        connection.setRequestProperty("accept", "*/*");
-//	        connection.setRequestProperty("connection", "Keep-Alive");
-//	        connection.setRequestProperty("user-agent",
-//	                "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-//	        // 建立实际的连接
-//	        connection.connect();
-//	        // 获取所有响应头字段
-//	        Map<String, List<String>> map = connection.getHeaderFields();
-//	        // 遍历所有的响应头字段
-//	        for (String key : map.keySet()) {
-//	            System.out.println(key + "--->" + map.get(key));
-//	        }
-//	        // 定义 BufferedReader输入流来读取URL的响应
-//	        in = new BufferedReader(new InputStreamReader(
-//	                connection.getInputStream()));
-//	        String line = "";
-//	        while ((line = in.readLine()) != null) {
-//	            result += line;
-//	        }
-//	        System.out.println(result);
-//	        jsonObject = JSON.parseObject(result);
-//	        responseBody.setData(jsonObject);
-//        }  catch (Exception e) {
-//        	logger.error(MilkTeaErrorConstant.MILETEA_SHOP_FAILURE.getCnErrorMsg(), e);
-//            throw new MilkTeaException(MilkTeaErrorConstant.MILETEA_SHOP_FAILURE, e);
-//        }
-//        // 使用finally块来关闭输入流
-//        finally {
-//            try {
-//                if (in != null) {
-//                    in.close();
-//                }
-//            } catch (Exception e2) {
-//                e2.printStackTrace();
-//            }
-//        }
+
 		return responseBody;
 	}
 	

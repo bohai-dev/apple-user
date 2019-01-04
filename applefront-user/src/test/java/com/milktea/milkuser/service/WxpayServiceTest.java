@@ -2,7 +2,9 @@ package com.milktea.milkuser.service;
 
 import com.apple.appleuser.Application;
 import com.apple.appleuser.exception.MilkTeaException;
+import com.apple.appleuser.service.UserLoginService;
 import com.apple.appleuser.service.UserRegisterService;
+import com.apple.appleuser.service.impl.UserLoginServiceImpl;
 import com.apple.appleuser.service.impl.WxpayServiceImpl;
 import com.apple.appleuser.vo.WXPayVo;
 import org.junit.Test;
@@ -22,6 +24,9 @@ public class WxpayServiceTest {
     WxpayServiceImpl wxpayService;
     @Autowired
     UserRegisterService userRegisterService;
+
+    @Autowired
+    UserLoginServiceImpl userLoginService;
 
     @Test
     public void unifiedorderTest(){
@@ -43,5 +48,20 @@ public class WxpayServiceTest {
         } catch (MilkTeaException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void loginTest(){
+        try {
+            userLoginService.saveUserInfo("4541","8788");
+        } catch (MilkTeaException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testStr(){
+        String str="https://api.weixin.qq.com/sns/userinfo?access_token=4541&openid=8788&lang=zh_CN &";
+        System.out.println(str.length());
     }
 }

@@ -33,6 +33,7 @@ public enum MilkTeaErrorConstant {
     USER_OPENID_ERROR("000020","没有查询到该用户的微信登录信息",""),
     WXPAY_ERROR("00021","微信支付错误",""),
     SIGN_ERROR("00021","签名错误",""),
+    WEIXIN_LOGIN_ERROR("00022","",""),
 
 
     UNKNOW_EXCEPTION("10000", "程序内部异常" , "Something wrong with program");

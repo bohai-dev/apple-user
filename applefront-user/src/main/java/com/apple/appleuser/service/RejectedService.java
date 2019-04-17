@@ -1,8 +1,9 @@
 package com.apple.appleuser.service;
 
 import com.apple.appleuser.domain.AppRejected;
-import com.apple.appleuser.domain.TeaUserInfo;
 import com.apple.appleuser.exception.MilkTeaException;
+
+
 
 public interface RejectedService {
 	
